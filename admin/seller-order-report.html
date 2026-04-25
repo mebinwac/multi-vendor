@@ -111,45 +111,57 @@
 
 <div class="page-header">
   <h1>Seller Order Report</h1>
-  <div class="actions">
-    <button class="btn btn-primary" onclick="downloadCsv()">📥 Download CSV</button>
-  </div>
 </div>
 <div class="content">
-<!-- Filter -->
-  <div class="toolbar">
-    <input type="date" value="2026-03-26" title="From date">
-    <input type="date" value="2026-04-25" title="To date">
-    <select>
-      <option>All sellers</option>
-      <option>Aisha Al-Mansoori (S101)</option>
-      <option>Mohammed Khalid (S102)</option>
-      <option>Sara Hassan Boutique (S103)</option>
-      <option>Layla Trading (S104)</option>
-      <option>Doha Electronics (S105)</option>
-      <option>Pearl Fashion Co. (S106)</option>
-      <option>Souq Al-Bahar (S107)</option>
+
+  <!-- Filter section -->
+  <div style="background:#fff; border:1px solid #e3e3e3; border-radius:2px; padding: 22px 26px; margin-bottom: 22px;">
+    <h2 style="margin:0 0 18px; font-size:18px; font-weight:400; color:#41362f; padding-bottom:10px; border-bottom:1px solid #e3e3e3;">Filter</h2>
+
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>Period</label>
+      <select id="period-sel" style="max-width:200px;">
+        <option value="day" selected>Day</option>
+        <option value="month">Month</option>
+        <option value="year">Year</option>
+      </select>
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>From <span style="color:#e22626;">*</span></label>
+      <input type="date" id="from-date" style="max-width:280px;">
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>To <span style="color:#e22626;">*</span></label>
+      <input type="date" id="to-date" style="max-width:280px;">
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>Empty Rows</label>
+      <select id="empty-rows" style="max-width:120px;">
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Export-to bar -->
+  <div style="display:flex; justify-content:flex-end; align-items:center; gap:10px; margin-bottom: 12px;">
+    <span style="font-size:13px; color:#41362f;">Export to:</span>
+    <select id="export-format" style="padding:6px 10px; border:1px solid #ccc; border-radius:2px; font-size:13px; background:#fff; min-width:100px;">
+      <option value="csv" selected>CSV</option>
     </select>
-    <select>
-      <option>All statuses</option>
-      <option>Complete</option>
-      <option>Processing</option>
-      <option>Pending</option>
-      <option>Canceled</option>
-    </select>
-    <button class="btn">🔍 Apply Filter</button>
-    <span class="spacer"></span>
-    <span class="records">412 records · 7 sellers</span>
+    <button class="btn" onclick="downloadCsv()">Export</button>
   </div>
 
   <!-- Summary cards -->
-  <div class="stat-row" style="margin-top:14px;">
+  <div class="stat-row" style="margin-bottom:14px;">
     <div class="stat"><div class="label">Total Orders</div><div class="value">412</div></div>
     <div class="stat"><div class="label">Items Sold</div><div class="value">687</div></div>
     <div class="stat"><div class="label">Gross Revenue</div><div class="value lifetime">QAR 542,180</div></div>
     <div class="stat"><div class="label">Commission</div><div class="value">QAR 64,820</div></div>
     <div class="stat"><div class="label">Active Sellers</div><div class="value">7</div></div>
   </div>
+
+  <span class="records" id="records-count">412 records · 7 sellers</span>
 
   <!-- Report table -->
   <table class="data" style="margin-top:14px;">
@@ -163,7 +175,46 @@
       <th>Commission</th>
       <th>Status</th>
     </tr></thead>
-    <tbody>
+    <tbody id="report-tbody">
+      <tr><td>Apr 25, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>7</td><td>9</td><td>QAR 18,420.00</td><td>QAR 1,205.40</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 25, 2026</td><td>Mohammed Khalid</td><td>S102</td><td>4</td><td>5</td><td>QAR 12,840.00</td><td>QAR 995.20</td><td><span class="status processing">processing</span></td></tr>
+      <tr><td>Apr 25, 2026</td><td>Sara Hassan Boutique</td><td>S103</td><td>3</td><td>4</td><td>QAR 8,210.00</td><td>QAR 743.20</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 25, 2026</td><td>Doha Electronics</td><td>S105</td><td>6</td><td>9</td><td>QAR 24,500.00</td><td>QAR 1,960.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 25, 2026</td><td>Souq Al-Bahar</td><td>S107</td><td>5</td><td>7</td><td>QAR 18,940.00</td><td>QAR 1,326.80</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>5</td><td>7</td><td>QAR 14,200.00</td><td>QAR 994.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Mohammed Khalid</td><td>S102</td><td>3</td><td>4</td><td>QAR 8,930.00</td><td>QAR 691.50</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Sara Hassan Boutique</td><td>S103</td><td>6</td><td>8</td><td>QAR 21,600.00</td><td>QAR 1,944.00</td><td><span class="status processing">processing</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Doha Electronics</td><td>S105</td><td>4</td><td>6</td><td>QAR 16,800.00</td><td>QAR 1,344.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 23, 2026</td><td>Pearl Fashion Co.</td><td>S106</td><td>2</td><td>3</td><td>QAR 4,200.00</td><td>QAR 504.00</td><td><span class="status canceled">canceled</span></td></tr>
+      <tr><td>Apr 23, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>4</td><td>6</td><td>QAR 12,890.00</td><td>QAR 902.30</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 23, 2026</td><td>Souq Al-Bahar</td><td>S107</td><td>7</td><td>11</td><td>QAR 28,150.00</td><td>QAR 1,970.50</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 22, 2026</td><td>Mohammed Khalid</td><td>S102</td><td>2</td><td>3</td><td>QAR 5,800.00</td><td>QAR 449.00</td><td><span class="status pending">pending</span></td></tr>
+      <tr><td>Apr 22, 2026</td><td>Doha Electronics</td><td>S105</td><td>5</td><td>7</td><td>QAR 19,750.00</td><td>QAR 1,580.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 22, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>3</td><td>4</td><td>QAR 9,420.00</td><td>QAR 659.40</td><td><span class="status complete">complete</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="font-weight:600; background:#f5f5f5;">
+        <td colspan="3" style="text-align:right;">Total (last 30 days)</td>
+        <td>412</td>
+        <td>687</td>
+        <td>QAR 542,180.00</td>
+        <td>QAR 64,820.00</td>
+        <td>—</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="pager" style="margin-top:12px;">
+    <span>‹</span>
+    <button class="pager-btn active">1</button>
+    <button class="pager-btn">2</button>
+    <button class="pager-btn">3</button>
+    <span>›</span>
+    <span style="margin-left:auto;">of 28 pages | View <input type="number" value="20" style="width:48px; padding:4px;"></span>
+  </div>
+
+  <!-- Hidden remnants kept for reference; ignored visually -->
+  <div style="display:none;"><table><tbody>
       <tr><td>Apr 25, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>7</td><td>9</td><td>QAR 18,420.00</td><td>QAR 1,205.40</td><td><span class="status complete">complete</span></td></tr>
       <tr><td>Apr 25, 2026</td><td>Mohammed Khalid</td><td>S102</td><td>4</td><td>5</td><td>QAR 12,840.00</td><td>QAR  995.20</td><td><span class="status processing">processing</span></td></tr>
       <tr><td>Apr 25, 2026</td><td>Sara Hassan Boutique</td><td>S103</td><td>3</td><td>4</td><td>QAR  8,210.00</td><td>QAR  743.20</td><td><span class="status complete">complete</span></td></tr>
@@ -180,26 +231,7 @@
       <tr><td>Apr 22, 2026</td><td>Doha Electronics</td><td>S105</td><td>5</td><td>7</td><td>QAR 19,750.00</td><td>QAR 1,580.00</td><td><span class="status complete">complete</span></td></tr>
       <tr><td>Apr 22, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>3</td><td>4</td><td>QAR  9,420.00</td><td>QAR  659.40</td><td><span class="status complete">complete</span></td></tr>
     </tbody>
-    <tfoot>
-      <tr style="font-weight:600; background:#f5f5f5;">
-        <td colspan="3">Total (last 30 days)</td>
-        <td>412</td>
-        <td>687</td>
-        <td>QAR 542,180.00</td>
-        <td>QAR 64,820.00</td>
-        <td>—</td>
-      </tr>
-    </tfoot>
-  </table>
-
-  <div class="pager">
-    <span>‹</span>
-    <button class="pager-btn active">1</button>
-    <button class="pager-btn">2</button>
-    <button class="pager-btn">3</button>
-    <span>›</span>
-    <span style="margin-left:auto;">of 28 pages | View <input type="number" value="20"></span>
-  </div>
+  </table></div>
 </div>
 <script>
   function downloadCsv() {
