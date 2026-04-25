@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>New Seller / Magento Admin</title>
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin">
+
+<aside class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,5 95,30 95,75 50,100 5,75 5,30" fill="#eb5202"/><polygon points="50,15 50,75 35,67 35,40 50,32 65,40 65,67 50,75" fill="#fff" opacity="0.4"/></svg>
+  </div>
+  <a class="nav-item" href="index.html"><span class="icon">⊞</span><span>DASHBOARD</span></a>
+  <div class="nav-item active" onclick="mpToggle()"><span class="icon">◇</span><span>MARKET<br>PLACE</span><span class="badge">0</span></div>
+  <div class="nav-item"><span class="icon">◊</span><span>LANDOF<br>CODER</span></div>
+  <div class="nav-item"><span class="icon">⋮⋮</span><span>VENUSTHEME<br>EXTENSIONS</span></div>
+  <div class="nav-item"><span class="icon">✦</span><span>VENUS<br>THEME</span></div>
+  <div class="nav-item"><span class="icon">$</span><span>SALES</span></div>
+  <div class="nav-item"><span class="icon">○</span><span>CLIQ PAY</span></div>
+  <div class="nav-item"><span class="icon">⟲</span><span>INVENTORY<br>SYNC</span></div>
+  <div class="nav-item"><span class="icon">◎</span><span>MILESTONES</span></div>
+  <div class="nav-item"><span class="icon">▣</span><span>PRODUCT<br>EXPORT</span></div>
+  <div class="nav-item"><span class="icon">▦</span><span>CATALOG</span></div>
+  <div class="nav-item"><span class="icon">W</span><span>WAC</span></div>
+</aside>
+
+
+<div id="mp-backdrop" onclick="mpClose()"></div>
+<aside id="mp-menu">
+  <div class="mp-head"><h2>Market Place</h2><button class="mp-close" onclick="mpClose()">✕</button></div>
+  <div class="mp-grid">
+    <div><h3>Seller</h3><ul>
+      <li><a class="mp-link" href="manage-sellers.html">Manage Sellers</a></li>
+      <li><a class="mp-link" href="manage-pending-sellers.html">Manage Pending Sellers</a><span class="mp-bell">0</span></li>
+      <li><a class="mp-link" href="manage-groups.html">Manage Groups</a></li>
+      <li><a class="mp-link" href="messages.html">Messages</a><span class="mp-bell">0</span></li>
+    </ul></div>
+    <div><h3>Sales</h3><ul>
+      <li><a class="mp-link" href="manage-orders.html">Manage Orders</a></li>
+      <li><a class="mp-link" href="manage-order-transactions.html">Manage Order Transactions</a></li>
+      <li><a class="mp-link" href="manage-invoices.html">Manage Invoices</a></li>
+      <li><a class="mp-link" href="manage-refunds.html">Manage Refunds</a></li>
+    </ul></div>
+    <div><h3>Reviews And Ratings</h3><ul>
+      <li><a class="mp-link" href="manage-reviews.html">Manage Reviews</a></li>
+      <li><a class="mp-link" href="manage-ratings.html">Manage Ratings</a></li>
+    </ul></div>
+    <div><h3>Commissions</h3><ul>
+      <li><a class="mp-link" href="manage-product-commissions.html">Manage Product Commissions</a></li>
+      <li><a class="mp-link" href="manage-shipping-commissions.html">Manage Shipping Commissions</a></li>
+    </ul></div>
+    <div><h3>Payments and Amounts</h3><ul>
+      <li><a class="mp-link" href="manage-amount-transactions.html">Manage Amount Transactions</a></li>
+      <li><a class="mp-link" href="manage-seller-amounts.html">Manage Seller Amounts</a></li>
+      <li><a class="mp-link" href="payment-methods.html">Payment Methods</a></li>
+      <li><a class="mp-link" href="all-withdrawal-requests.html">All Withdrawal Requests</a><span class="mp-bell">0</span></li>
+    </ul></div>
+    <div><h3>Core</h3><ul><li><a class="mp-link" href="configuration.html">Configuration</a></li></ul></div>
+    <div><h3>Catalog</h3><ul>
+      <li><a class="mp-link" href="manage-products.html">Manage Products</a></li>
+      <li><a class="mp-link" href="manage-pending-products.html">Manage Pending Products</a><span class="mp-bell">0</span></li>
+    </ul></div>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+  <div class="breadcrumb"><button class="menu-btn" onclick="mpToggle()">☰ Market Place</button> <span>Market Place / Seller / Manage Sellers / New Seller</span></div>
+  <div class="topright">
+    <span class="sysmsg">System Messages: 3 ▾</span>
+    <button class="icon-btn" title="Search">🔍</button>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">99+</span></button>
+    <span class="user">👤 vishnupd ▾</span>
+  </div>
+</div>
+
+<div class="page-header" style="position:relative;">
+  <h1>New Seller</h1>
+  <div class="actions">
+    <button class="btn" onclick="history.back()">← Back</button>
+    <button class="btn">Reset</button>
+    <span class="split-btn">
+      <button class="btn btn-primary" onclick="alert('Saved successfully'); location.href='manage-sellers.html';">Save</button>
+      <button class="split-trigger" onclick="toggleSplit()">▾</button>
+    </span>
+  </div>
+  <div class="split-menu">
+    <a href="#" onclick="alert('Saved'); return false;">Save and Continue Edit</a>
+    <a href="#" onclick="alert('Saved'); location.href='manage-sellers.html'; return false;">Save and Close</a>
+    <a href="#" onclick="alert('Saved as new'); return false;">Save as Duplicate</a>
+  </div>
+</div>
+
+<div class="content">
+  <div class="edit-layout"><aside class="edit-nav"><div class="nav-title">INFORMATION</div><a href="#sec-account" class="active">Account Information</a><a href="#sec-shop" class="">Shop Information</a><a href="#sec-bank" class="">Bank Account Details</a><a href="#sec-social" class="">Social Profiles</a><a href="#sec-permissions" class="">Permissions</a><a href="#sec-seo" class="">SEO Settings</a></aside><div class="edit-content"><div class="fieldset" id="sec-account"><div class="legend">Account Information</div><div class="fieldset-body"><div class="field"><label>Seller Group<span class="req">*</span><span class="info" title="Determines commission tier and permissions">?</span></label><div><select><option>Bronze</option><option selected>Gold</option><option>Silver</option><option>Platinum (VIP)</option></select></div></div><div class="field"><label>Status<span class="req">*</span></label><div><select><option>Pending</option><option selected>Approved</option><option>Disabled</option></select></div></div><div class="field"><label>First Name<span class="req">*</span></label><div><input type="text" value=""></div></div><div class="field"><label>Last Name<span class="req">*</span></label><div><input type="text" value=""></div></div><div class="field"><label>Email<span class="req">*</span></label><div><input type="email" value=""><div class="hint">Used for login and notifications</div></div></div><div class="field"><label>Phone Number</label><div><input type="text" value=""></div></div><div class="field"><label>Password<span class="req">*</span></label><div><input type="password" placeholder="Min 8 chars, mixed case + number"></div></div><div class="field"><label>Confirm Password<span class="req">*</span></label><div><input type="password"></div></div></div></div><div class="fieldset" id="sec-shop"><div class="legend">Shop Information</div><div class="fieldset-body"><div class="field"><label>Shop Title<span class="req">*</span></label><div><input type="text" value=""></div></div><div class="field"><label>Shop URL Key<span class="req">*</span></label><div><input type="text" value=""><div class="hint">Used in URL: /shop/{key}</div></div></div><div class="field"><label>Shop Description</label><div><textarea rows="4"></textarea></div></div><div class="field"><label>Shop Logo</label><div><div class="field-row-control"><button class="btn">Choose File</button> <span style="color:#888;">No file chosen</span></div><div class="hint">Recommended: 200×200px, PNG/JPG, max 2MB</div></div></div><div class="field"><label>Shop Banner</label><div><div class="field-row-control"><button class="btn">Choose File</button> <span style="color:#888;">No file chosen</span></div><div class="hint">Recommended: 1200×400px</div></div></div><div class="field"><label>Country</label><div><select><option selected>Qatar</option><option>UAE</option><option>Saudi Arabia</option><option>Kuwait</option><option>Bahrain</option><option>Oman</option></select></div></div><div class="field"><label>City</label><div><input type="text" value=""></div></div><div class="field"><label>Address</label><div><textarea rows="2"></textarea></div></div><div class="field"><label>Postal Code</label><div><input type="text" value=""></div></div></div></div><div class="fieldset" id="sec-bank"><div class="legend">Bank Account Details</div><div class="fieldset-body"><div class="field"><label>Account Holder Name<span class="req">*</span></label><div><input type="text" value=""></div></div><div class="field"><label>Bank Name<span class="req">*</span></label><div><input type="text" value=""></div></div><div class="field"><label>Branch</label><div><input type="text" value=""></div></div><div class="field"><label>IBAN / Account Number<span class="req">*</span></label><div><input type="text" value=""></div></div><div class="field"><label>Swift / BIC Code</label><div><input type="text" value=""></div></div><div class="field"><label>Tax / VAT ID</label><div><input type="text" value=""></div></div></div></div><div class="fieldset" id="sec-social"><div class="legend">Social Profiles</div><div class="fieldset-body"><div class="field"><label>Facebook</label><div><input type="text" value=""></div></div><div class="field"><label>Instagram</label><div><input type="text" value=""></div></div><div class="field"><label>Twitter / X</label><div><input type="text" value=""></div></div><div class="field"><label>Website</label><div><input type="text" value=""></div></div></div></div><div class="fieldset" id="sec-permissions"><div class="legend">Permissions</div><div class="fieldset-body"><div class="field"><label>Manage Own Products</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Set Custom Shipping</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Issue Refunds</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Direct Customer Messaging</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>View Sales Reports</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Manage Subsellers</label><div><select><option>Allow</option><option selected>Deny</option></select></div></div></div></div><div class="fieldset" id="sec-seo"><div class="legend">SEO Settings</div><div class="fieldset-body"><div class="field"><label>Meta Title</label><div><input type="text" value=""><div class="hint">Max 70 characters</div></div></div><div class="field"><label>Meta Keywords</label><div><input type="text" value=""></div></div><div class="field"><label>Meta Description</label><div><textarea rows="3"></textarea><div class="hint">Max 160 characters</div></div></div></div></div></div></div>
+</div>
+
+<div class="footer"><strong>Magento</strong> ver. 2.4.6 — © 2025 Magento Commerce Inc. All rights reserved.</div>
+</main>
+</div>
+<script src="assets/admin.js"></script>
+<script>
+  // Collapsible fieldsets
+  document.addEventListener('click', function(e){
+    var leg = e.target.closest('.fieldset > .legend');
+    if (leg) leg.parentElement.classList.toggle('collapsed');
+  });
+  // Edit-nav scroll to section
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.edit-nav a');
+    if (!a) return;
+    e.preventDefault();
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.classList.remove('collapsed');
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      document.querySelectorAll('.edit-nav a').forEach(function(x){x.classList.remove('active');});
+      a.classList.add('active');
+    }
+  });
+  // Split save dropdown
+  function toggleSplit(){ document.querySelector('.split-menu').classList.toggle('show'); }
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.split-btn') && !e.target.closest('.split-menu')) {
+      document.querySelector('.split-menu')?.classList.remove('show');
+    }
+  });
+</script>
+</body>
+</html>

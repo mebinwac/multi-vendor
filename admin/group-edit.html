@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Edit Group - Gold / Magento Admin</title>
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin">
+
+<aside class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,5 95,30 95,75 50,100 5,75 5,30" fill="#eb5202"/><polygon points="50,15 50,75 35,67 35,40 50,32 65,40 65,67 50,75" fill="#fff" opacity="0.4"/></svg>
+  </div>
+  <a class="nav-item" href="index.html"><span class="icon">⊞</span><span>DASHBOARD</span></a>
+  <div class="nav-item active" onclick="mpToggle()"><span class="icon">◇</span><span>MARKET<br>PLACE</span><span class="badge">0</span></div>
+  <div class="nav-item"><span class="icon">◊</span><span>LANDOF<br>CODER</span></div>
+  <div class="nav-item"><span class="icon">⋮⋮</span><span>VENUSTHEME<br>EXTENSIONS</span></div>
+  <div class="nav-item"><span class="icon">✦</span><span>VENUS<br>THEME</span></div>
+  <div class="nav-item"><span class="icon">$</span><span>SALES</span></div>
+  <div class="nav-item"><span class="icon">○</span><span>CLIQ PAY</span></div>
+  <div class="nav-item"><span class="icon">⟲</span><span>INVENTORY<br>SYNC</span></div>
+  <div class="nav-item"><span class="icon">◎</span><span>MILESTONES</span></div>
+  <div class="nav-item"><span class="icon">▣</span><span>PRODUCT<br>EXPORT</span></div>
+  <div class="nav-item"><span class="icon">▦</span><span>CATALOG</span></div>
+  <div class="nav-item"><span class="icon">W</span><span>WAC</span></div>
+</aside>
+
+
+<div id="mp-backdrop" onclick="mpClose()"></div>
+<aside id="mp-menu">
+  <div class="mp-head"><h2>Market Place</h2><button class="mp-close" onclick="mpClose()">✕</button></div>
+  <div class="mp-grid">
+    <div><h3>Seller</h3><ul>
+      <li><a class="mp-link" href="manage-sellers.html">Manage Sellers</a></li>
+      <li><a class="mp-link" href="manage-pending-sellers.html">Manage Pending Sellers</a><span class="mp-bell">0</span></li>
+      <li><a class="mp-link" href="manage-groups.html">Manage Groups</a></li>
+      <li><a class="mp-link" href="messages.html">Messages</a><span class="mp-bell">0</span></li>
+    </ul></div>
+    <div><h3>Sales</h3><ul>
+      <li><a class="mp-link" href="manage-orders.html">Manage Orders</a></li>
+      <li><a class="mp-link" href="manage-order-transactions.html">Manage Order Transactions</a></li>
+      <li><a class="mp-link" href="manage-invoices.html">Manage Invoices</a></li>
+      <li><a class="mp-link" href="manage-refunds.html">Manage Refunds</a></li>
+    </ul></div>
+    <div><h3>Reviews And Ratings</h3><ul>
+      <li><a class="mp-link" href="manage-reviews.html">Manage Reviews</a></li>
+      <li><a class="mp-link" href="manage-ratings.html">Manage Ratings</a></li>
+    </ul></div>
+    <div><h3>Commissions</h3><ul>
+      <li><a class="mp-link" href="manage-product-commissions.html">Manage Product Commissions</a></li>
+      <li><a class="mp-link" href="manage-shipping-commissions.html">Manage Shipping Commissions</a></li>
+    </ul></div>
+    <div><h3>Payments and Amounts</h3><ul>
+      <li><a class="mp-link" href="manage-amount-transactions.html">Manage Amount Transactions</a></li>
+      <li><a class="mp-link" href="manage-seller-amounts.html">Manage Seller Amounts</a></li>
+      <li><a class="mp-link" href="payment-methods.html">Payment Methods</a></li>
+      <li><a class="mp-link" href="all-withdrawal-requests.html">All Withdrawal Requests</a><span class="mp-bell">0</span></li>
+    </ul></div>
+    <div><h3>Core</h3><ul><li><a class="mp-link" href="configuration.html">Configuration</a></li></ul></div>
+    <div><h3>Catalog</h3><ul>
+      <li><a class="mp-link" href="manage-products.html">Manage Products</a></li>
+      <li><a class="mp-link" href="manage-pending-products.html">Manage Pending Products</a><span class="mp-bell">0</span></li>
+    </ul></div>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+  <div class="breadcrumb"><button class="menu-btn" onclick="mpToggle()">☰ Market Place</button> <span>Market Place / Seller / Manage Groups / Edit</span></div>
+  <div class="topright">
+    <span class="sysmsg">System Messages: 3 ▾</span>
+    <button class="icon-btn" title="Search">🔍</button>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">99+</span></button>
+    <span class="user">👤 vishnupd ▾</span>
+  </div>
+</div>
+
+<div class="page-header" style="position:relative;">
+  <h1>Edit Group - Gold</h1>
+  <div class="actions">
+    <button class="btn" onclick="history.back()">← Back</button>
+    <button class="btn">Reset</button>
+    <span class="split-btn">
+      <button class="btn btn-primary" onclick="alert('Saved successfully'); location.href='manage-groups.html';">Save</button>
+      <button class="split-trigger" onclick="toggleSplit()">▾</button>
+    </span>
+  </div>
+  <div class="split-menu">
+    <a href="#" onclick="alert('Saved'); return false;">Save and Continue Edit</a>
+    <a href="#" onclick="alert('Saved'); location.href='manage-groups.html'; return false;">Save and Close</a>
+    <a href="#" onclick="alert('Saved as new'); return false;">Save as Duplicate</a>
+  </div>
+</div>
+
+<div class="content">
+  <div class="edit-layout"><aside class="edit-nav"><div class="nav-title">INFORMATION</div><a href="#sec-info" class="active">Group Information</a><a href="#sec-rules" class="">Auto-Assignment Rules</a><a href="#sec-perms" class="">Permissions</a></aside><div class="edit-content"><div class="fieldset" id="sec-info"><div class="legend">Group Information</div><div class="fieldset-body"><div class="field"><label>Group Name<span class="req">*</span></label><div><input type="text" value="Gold"></div></div><div class="field"><label>Group Code<span class="req">*</span></label><div><input type="text" value="gold"><div class="hint">Used in code references</div></div></div><div class="field"><label>Description</label><div><textarea rows="3">Top-tier sellers with premium benefits, lower commission rate, and dedicated support.</textarea></div></div><div class="field"><label>Default Commission (%)<span class="req">*</span></label><div><input type="number" step="0.01" value="7"></div></div><div class="field"><label>Status</label><div><select><option selected>Active</option><option>Inactive</option></select></div></div><div class="field"><label>Sort Order</label><div><input type="number" value="3"></div></div></div></div><div class="fieldset" id="sec-rules"><div class="legend">Auto-Assignment Rules</div><div class="fieldset-body"><div class="field"><label>Auto-Assign</label><div><select><option>None</option><option selected>By Sales Volume</option><option>By Account Age</option><option>Invite Only</option></select></div></div><div class="field"><label>Min Total Sales (QAR)</label><div><input type="number" value="20000"></div></div><div class="field"><label>Min Account Age (days)</label><div><input type="number" value="180"></div></div><div class="field"><label>Min Avg Rating</label><div><input type="number" step="0.1" value="4.0"></div></div></div></div><div class="fieldset" id="sec-perms"><div class="legend">Permissions</div><div class="fieldset-body"><div class="field"><label>Manage Own Products</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Set Custom Shipping</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Issue Refunds</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Direct Customer Messaging</label><div><select><option selected>Allow</option><option>Deny</option></select></div></div><div class="field"><label>Featured Listing Slots</label><div><input type="number" value="10"></div></div></div></div></div></div>
+</div>
+
+<div class="footer"><strong>Magento</strong> ver. 2.4.6 — © 2025 Magento Commerce Inc. All rights reserved.</div>
+</main>
+</div>
+<script src="assets/admin.js"></script>
+<script>
+  // Collapsible fieldsets
+  document.addEventListener('click', function(e){
+    var leg = e.target.closest('.fieldset > .legend');
+    if (leg) leg.parentElement.classList.toggle('collapsed');
+  });
+  // Edit-nav scroll to section
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.edit-nav a');
+    if (!a) return;
+    e.preventDefault();
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.classList.remove('collapsed');
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      document.querySelectorAll('.edit-nav a').forEach(function(x){x.classList.remove('active');});
+      a.classList.add('active');
+    }
+  });
+  // Split save dropdown
+  function toggleSplit(){ document.querySelector('.split-menu').classList.toggle('show'); }
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.split-btn') && !e.target.closest('.split-menu')) {
+      document.querySelector('.split-menu')?.classList.remove('show');
+    }
+  });
+</script>
+</body>
+</html>

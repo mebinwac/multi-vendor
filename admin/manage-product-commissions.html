@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Manage Product Commissions / Magento Admin</title>
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin">
+
+<aside class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,5 95,30 95,75 50,100 5,75 5,30" fill="#eb5202"/><polygon points="50,15 50,75 35,67 35,40 50,32 65,40 65,67 50,75" fill="#fff" opacity="0.4"/></svg>
+  </div>
+  <a class="nav-item " href="index.html"><span class="icon">⊞</span><span>DASHBOARD</span></a>
+  <div class="nav-item active" onclick="mpToggle()"><span class="icon">◇</span><span>MARKET<br>PLACE</span><span class="badge">0</span></div>
+  <div class="nav-item"><span class="icon">◊</span><span>LANDOF<br>CODER</span></div>
+  <div class="nav-item"><span class="icon">⋮⋮</span><span>VENUSTHEME<br>EXTENSIONS</span></div>
+  <div class="nav-item"><span class="icon">✦</span><span>VENUS<br>THEME</span></div>
+  <div class="nav-item"><span class="icon">$</span><span>SALES</span></div>
+  <div class="nav-item"><span class="icon">○</span><span>CLIQ PAY</span></div>
+  <div class="nav-item"><span class="icon">⟲</span><span>INVENTORY<br>SYNC</span></div>
+  <div class="nav-item"><span class="icon">◎</span><span>MILESTONES</span></div>
+  <div class="nav-item"><span class="icon">▣</span><span>PRODUCT<br>EXPORT</span></div>
+  <div class="nav-item"><span class="icon">▦</span><span>CATALOG</span></div>
+  <div class="nav-item"><span class="icon">W</span><span>WAC</span></div>
+</aside>
+
+
+<div id="mp-backdrop" class="show" onclick="mpClose()"></div>
+<aside id="mp-menu" class="open">
+  <div class="mp-head">
+    <h2>Market Place</h2>
+    <button class="mp-close" onclick="mpClose()">✕</button>
+  </div>
+  <div class="mp-grid">
+    <div>
+      <h3>Seller</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-sellers.html">Manage Sellers</a></li>
+        <li><a class="mp-link" href="manage-pending-sellers.html">Manage Pending Sellers</a><span class="mp-bell">0</span></li>
+        <li><a class="mp-link" href="manage-groups.html">Manage Groups</a></li>
+        <li><a class="mp-link" href="messages.html">Messages</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Sales</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-orders.html">Manage Orders</a></li>
+        <li><a class="mp-link" href="manage-order-transactions.html">Manage Order Transactions</a></li>
+        <li><a class="mp-link" href="manage-invoices.html">Manage Invoices</a></li>
+        <li><a class="mp-link" href="manage-refunds.html">Manage Refunds</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Reviews And Ratings</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-reviews.html">Manage Reviews</a></li>
+        <li><a class="mp-link" href="manage-ratings.html">Manage Ratings</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Commissions</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-product-commissions.html">Manage Product Commissions</a></li>
+        <li><a class="mp-link" href="manage-shipping-commissions.html">Manage Shipping Commissions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Payments and Amounts</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-amount-transactions.html">Manage Amount Transactions</a></li>
+        <li><a class="mp-link" href="manage-seller-amounts.html">Manage Seller Amounts</a></li>
+        <li><a class="mp-link" href="payment-methods.html">Payment Methods</a></li>
+        <li><a class="mp-link" href="all-withdrawal-requests.html">All Withdrawal Requests</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Core</h3>
+      <ul><li><a class="mp-link" href="configuration.html">Configuration</a></li></ul>
+    </div>
+    <div>
+      <h3>Catalog</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-products.html">Manage Products</a></li>
+        <li><a class="mp-link" href="manage-pending-products.html">Manage Pending Products</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+  <div class="breadcrumb"><button class="menu-btn" onclick="mpToggle()">☰ Market Place</button> <span>Market Place / Commissions / Manage Product Commissions</span></div>
+  <div class="topright">
+    <span class="sysmsg">System Messages: 3 ▾</span>
+    <button class="icon-btn" title="Search">🔍</button>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">99+</span></button>
+    <span class="user">👤 vishnupd ▾</span>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>Manage Product Commissions</h1>
+  <div class="actions">
+    <button class="btn btn-primary" onclick="location.href='commission-new.html'">Add New Commission</button>
+  </div>
+</div>
+<div class="content">
+  <div class="toolbar">
+    <input type="text" placeholder="Search by keyword">
+    
+    <span class="spacer"></span>
+    <span class="records">5 records found</span>
+    <select><option>20 per page</option><option>50 per page</option><option>100 per page</option></select>
+  </div>
+  <table class="data">
+    <thead><tr><th class='check-col'><input type='checkbox'></th><th>ID</th><th>Rule Name</th><th>Applies To</th><th>Commission</th><th>Type</th><th>Status</th></tr></thead>
+    <tbody><tr><td class='check-col'><input type='checkbox'></td><td>1</td><td>Default Commission</td><td>All Categories</td><td>10%</td><td>Fixed</td><td><span class="status active">Active</span></td></tr><tr><td class='check-col'><input type='checkbox'></td><td>2</td><td>Electronics</td><td>Electronics</td><td>8%</td><td>Percentage</td><td><span class="status active">Active</span></td></tr><tr><td class='check-col'><input type='checkbox'></td><td>3</td><td>Fashion</td><td>Apparel</td><td>12%</td><td>Percentage</td><td><span class="status active">Active</span></td></tr><tr><td class='check-col'><input type='checkbox'></td><td>4</td><td>Handmade</td><td>Handcrafted</td><td>15%</td><td>Percentage</td><td><span class="status active">Active</span></td></tr><tr><td class='check-col'><input type='checkbox'></td><td>5</td><td>Books & Media</td><td>Books, Media</td><td>5%</td><td>Percentage</td><td><span class="status active">Active</span></td></tr></tbody>
+  </table>
+  <div class="pager">
+    <span>‹</span>
+    <button class="pager-btn active">1</button>
+    <button class="pager-btn">2</button>
+    <button class="pager-btn">3</button>
+    <span>›</span>
+    <span style="margin-left:auto;">of 3 pages | View <input type="number" value="20" /></span>
+  </div>
+</div>
+
+<div class="footer"><strong>Magento</strong> ver. 2.4.6 — © 2025 Magento Commerce Inc. All rights reserved. <a href="#" style="float:right;">Privacy Policy</a> · <a href="#" style="float:right; margin-right:14px;">Account Activity</a> · <a href="#" style="float:right; margin-right:14px;">Report an Issue</a></div>
+</main>
+</div>
+<script src="assets/admin.js"></script>
+</body>
+</html>

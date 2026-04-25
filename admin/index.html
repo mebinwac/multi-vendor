@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Dashboard / Magento Admin</title>
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin">
+
+<aside class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,5 95,30 95,75 50,100 5,75 5,30" fill="#eb5202"/><polygon points="50,15 50,75 35,67 35,40 50,32 65,40 65,67 50,75" fill="#fff" opacity="0.4"/></svg>
+  </div>
+  <a class="nav-item active" href="index.html"><span class="icon">⊞</span><span>DASHBOARD</span></a>
+  <div class="nav-item " onclick="mpToggle()"><span class="icon">◇</span><span>MARKET<br>PLACE</span><span class="badge">0</span></div>
+  <div class="nav-item"><span class="icon">◊</span><span>LANDOF<br>CODER</span></div>
+  <div class="nav-item"><span class="icon">⋮⋮</span><span>VENUSTHEME<br>EXTENSIONS</span></div>
+  <div class="nav-item"><span class="icon">✦</span><span>VENUS<br>THEME</span></div>
+  <div class="nav-item"><span class="icon">$</span><span>SALES</span></div>
+  <div class="nav-item"><span class="icon">○</span><span>CLIQ PAY</span></div>
+  <div class="nav-item"><span class="icon">⟲</span><span>INVENTORY<br>SYNC</span></div>
+  <div class="nav-item"><span class="icon">◎</span><span>MILESTONES</span></div>
+  <div class="nav-item"><span class="icon">▣</span><span>PRODUCT<br>EXPORT</span></div>
+  <div class="nav-item"><span class="icon">▦</span><span>CATALOG</span></div>
+  <div class="nav-item"><span class="icon">W</span><span>WAC</span></div>
+</aside>
+
+
+<div id="mp-backdrop" class="show" onclick="mpClose()"></div>
+<aside id="mp-menu" class="open">
+  <div class="mp-head">
+    <h2>Market Place</h2>
+    <button class="mp-close" onclick="mpClose()">✕</button>
+  </div>
+  <div class="mp-grid">
+    <div>
+      <h3>Seller</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-sellers.html">Manage Sellers</a></li>
+        <li><a class="mp-link" href="manage-pending-sellers.html">Manage Pending Sellers</a><span class="mp-bell">0</span></li>
+        <li><a class="mp-link" href="manage-groups.html">Manage Groups</a></li>
+        <li><a class="mp-link" href="messages.html">Messages</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Sales</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-orders.html">Manage Orders</a></li>
+        <li><a class="mp-link" href="manage-order-transactions.html">Manage Order Transactions</a></li>
+        <li><a class="mp-link" href="manage-invoices.html">Manage Invoices</a></li>
+        <li><a class="mp-link" href="manage-refunds.html">Manage Refunds</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Reviews And Ratings</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-reviews.html">Manage Reviews</a></li>
+        <li><a class="mp-link" href="manage-ratings.html">Manage Ratings</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Commissions</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-product-commissions.html">Manage Product Commissions</a></li>
+        <li><a class="mp-link" href="manage-shipping-commissions.html">Manage Shipping Commissions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Payments and Amounts</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-amount-transactions.html">Manage Amount Transactions</a></li>
+        <li><a class="mp-link" href="manage-seller-amounts.html">Manage Seller Amounts</a></li>
+        <li><a class="mp-link" href="payment-methods.html">Payment Methods</a></li>
+        <li><a class="mp-link" href="all-withdrawal-requests.html">All Withdrawal Requests</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Core</h3>
+      <ul><li><a class="mp-link" href="configuration.html">Configuration</a></li></ul>
+    </div>
+    <div>
+      <h3>Catalog</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-products.html">Manage Products</a></li>
+        <li><a class="mp-link" href="manage-pending-products.html">Manage Pending Products</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+  <div class="breadcrumb"><button class="menu-btn" onclick="mpToggle()">☰ Market Place</button> <span>Dashboard</span></div>
+  <div class="topright">
+    <span class="sysmsg">System Messages: 3 ▾</span>
+    <button class="icon-btn" title="Search">🔍</button>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">99+</span></button>
+    <span class="user">👤 vishnupd ▾</span>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>Dashboard</h1>
+  <div class="actions"><button class="btn btn-primary">Reload Data</button></div>
+</div>
+<div class="content">
+  <div class="reporting-box">
+    <div class="text">⚠ Advanced Reporting service is not available. Please check Advanced Reporting service status.</div>
+  </div>
+  <div class="reporting-box" style="background:#fff; border-color:#e3e3e3;">
+    <div class="text" style="color:#303030;">Take the experience to the next level with Magento Business Intelligence Essentials, with custom reports tailored to your customer data.</div>
+    <button class="btn" style="background:#1979c3;color:#fff;border-color:#1979c3;">Go to Advanced Reporting ↗</button>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><div class="label">Lifetime Sales</div><div class="value lifetime">QAR 28,540.00</div></div>
+    <div class="stat"><div class="label">Average Order</div><div class="value">QAR 142.70</div></div>
+    <div class="stat"><div class="label">Last Orders</div><div class="value">15</div></div>
+    <div class="stat"><div class="label">Last Search Terms</div><div class="value">7</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="tabs">
+        <div class="tab active">Orders</div>
+        <div class="tab">Amounts</div>
+        <div class="tab">Shipping</div>
+        <div class="tab">Quantity</div>
+      </div>
+      <select class="btn"><option>Last 24 Hours</option><option>Last 7 Days</option><option>Current Month</option></select>
+    </div>
+    <div class="panel-body">
+      <div class="chart">📈 Sales chart (orders vs time)</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:18px;">
+        <div><div style="color:#888;font-size:12px;">Revenue</div><div style="font-size:22px;color:#eb5202;">QAR 1,240.00</div></div>
+        <div><div style="color:#888;font-size:12px;">Tax</div><div style="font-size:22px;">QAR 62.00</div></div>
+        <div><div style="color:#888;font-size:12px;">Shipping</div><div style="font-size:22px;">QAR 75.00</div></div>
+        <div><div style="color:#888;font-size:12px;">Quantity</div><div style="font-size:22px;">12</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head">Last Orders</div>
+      <table class="data">
+        <thead><tr><th>Customer</th><th>Items</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>Vishnun Test</td><td>2</td><td>104.00 ر.ق</td></tr>
+          <tr><td>Aisha Al-Mansoori</td><td>3</td><td>289.50 ر.ق</td></tr>
+          <tr><td>Mohammed Khalid</td><td>1</td><td>49.00 ر.ق</td></tr>
+          <tr><td>Sara Hassan</td><td>5</td><td>612.00 ر.ق</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <div class="panel-head">Bestsellers</div>
+      <table class="data">
+        <thead><tr><th>Product</th><th>Qty</th></tr></thead>
+        <tbody>
+          <tr><td>Cotton T-Shirt</td><td>34</td></tr>
+          <tr><td>Wireless Headset</td><td>22</td></tr>
+          <tr><td>Handbag - Beige</td><td>18</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">Most Viewed Products</div>
+    <table class="data">
+      <thead><tr><th>Product</th><th>Price</th><th>Views</th></tr></thead>
+      <tbody>
+        <tr><td>Cotton T-Shirt</td><td>49.00 ر.ق</td><td>1,204</td></tr>
+        <tr><td>Wireless Headset</td><td>320.00 ر.ق</td><td>876</td></tr>
+        <tr><td>Handbag - Beige</td><td>180.00 ر.ق</td><td>654</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer"><strong>Magento</strong> ver. 2.4.6 — © 2025 Magento Commerce Inc. All rights reserved. <a href="#" style="float:right;">Privacy Policy</a> · <a href="#" style="float:right; margin-right:14px;">Account Activity</a> · <a href="#" style="float:right; margin-right:14px;">Report an Issue</a></div>
+</main>
+</div>
+<script src="assets/admin.js"></script>
+</body>
+</html>

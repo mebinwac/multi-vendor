@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Apple retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item active" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <a class="nav-item" href="advanced-report.html"><span class="ic">📊</span><span>Advanced Report</span></a>
+    <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">AR</div>
+      <span class="name">Apple retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="stat-grid">
+  <div class="stat-card blue"><div><div class="stat-num">QAR 12,840</div><div class="stat-lbl">Credit Amount</div></div><div class="stat-icon">💳</div></div>
+  <div class="stat-card green"><div><div class="stat-num">QAR 248,560</div><div class="stat-lbl">Total Sales</div></div><div class="stat-icon">💰</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">187</div><div class="stat-lbl">Total Orders</div></div><div class="stat-icon">🛒</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">42</div><div class="stat-lbl">Total Products</div></div><div class="stat-icon">📦</div></div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card"><div><div class="stat-lbl" style="margin-bottom:8px;">Today's Sales</div><div class="stat-num" style="font-size:24px;">7</div></div></div>
+  <div class="stat-card"><div><div class="stat-lbl" style="margin-bottom:8px;">Today's Earnings</div><div class="stat-num" style="font-size:24px;">QAR 18,420.00</div></div></div>
+  <div class="stat-card"><div><div class="stat-lbl" style="margin-bottom:8px;">Current Month's Sales</div><div class="stat-num" style="font-size:24px;">94</div></div></div>
+  <div class="stat-card"><div><div class="stat-lbl" style="margin-bottom:8px;">Current Month's Earnings</div><div class="stat-num" style="font-size:24px;">QAR 84,210.00</div></div></div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">Your top countries</div>
+  <div class="map-area">
+    <div class="country-list">
+      <div class="head">Earning QAR 248,560 from 6 countries</div>
+      <table class="data" style="border:none;">
+        <thead><tr><th style="background:none;">Country</th><th style="background:none;">Total Order</th><th style="background:none;">Total Earning</th></tr></thead>
+        <tbody>
+          <tr><td>🇶🇦 Qatar</td><td>112</td><td>QAR 158,940</td></tr>
+          <tr><td>🇦🇪 UAE</td><td>34</td><td>QAR 41,200</td></tr>
+          <tr><td>🇸🇦 Saudi Arabia</td><td>22</td><td>QAR 28,150</td></tr>
+          <tr><td>🇰🇼 Kuwait</td><td>11</td><td>QAR 12,470</td></tr>
+          <tr><td>🇧🇭 Bahrain</td><td>5</td><td>QAR 4,890</td></tr>
+          <tr><td>🇴🇲 Oman</td><td>3</td><td>QAR 2,910</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="map-svg">🌍 World map (orders by country)</div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">Last Orders <a href="#" style="font-size:13px; font-weight:normal; color:#1abc9c;">View All →</a></div>
+  <table class="data">
+    <thead><tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+    <tbody>
+      <tr><td><a href="#">#100247</a></td><td>Ahmed Al-Thani</td><td>2</td><td>QAR 5,899.00</td><td><span class="status-pill complete">Complete</span></td><td>2026-04-25 14:22</td></tr>
+      <tr><td><a href="#">#100246</a></td><td>Fatima Khan</td><td>1</td><td>QAR 4,499.00</td><td><span class="status-pill processing">Processing</span></td><td>2026-04-25 11:08</td></tr>
+      <tr><td><a href="#">#100245</a></td><td>Omar Al-Mansoori</td><td>3</td><td>QAR 8,710.00</td><td><span class="status-pill complete">Complete</span></td><td>2026-04-24 19:45</td></tr>
+      <tr><td><a href="#">#100244</a></td><td>Layla Hassan</td><td>1</td><td>QAR 1,299.00</td><td><span class="status-pill pending">Pending</span></td><td>2026-04-24 16:30</td></tr>
+      <tr><td><a href="#">#100243</a></td><td>Khalid Trading Co.</td><td>5</td><td>QAR 24,500.00</td><td><span class="status-pill complete">Complete</span></td><td>2026-04-24 09:12</td></tr>
+      <tr><td><a href="#">#100242</a></td><td>Sara Boutique</td><td>2</td><td>QAR 3,798.00</td><td><span class="status-pill complete">Complete</span></td><td>2026-04-23 22:47</td></tr>
+      <tr><td><a href="#">#100241</a></td><td>Mariam Al-Sulaiti</td><td>1</td><td>QAR 899.00</td><td><span class="status-pill canceled">Canceled</span></td><td>2026-04-23 15:33</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="stat-grid" style="grid-template-columns:1fr 1fr;">
+  <div class="panel" style="margin:0;">
+    <div class="panel-head">Best Sellers</div>
+    <table class="data">
+      <thead><tr><th>Product</th><th>Qty Sold</th><th>Revenue</th></tr></thead>
+      <tbody>
+        <tr><td>📱 iPhone 15 Pro Max - 256GB</td><td>32</td><td>QAR 124,800</td></tr>
+        <tr><td>💻 MacBook Air M3 13"</td><td>18</td><td>QAR 81,000</td></tr>
+        <tr><td>🎧 AirPods Pro 2nd Gen</td><td>47</td><td>QAR 42,300</td></tr>
+        <tr><td>⌚ Apple Watch Series 9</td><td>22</td><td>QAR 35,200</td></tr>
+        <tr><td>📱 iPad Air 11" M2</td><td>14</td><td>QAR 32,900</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel" style="margin:0;">
+    <div class="panel-head">Most Viewed Products</div>
+    <table class="data">
+      <thead><tr><th>Product</th><th>Views</th></tr></thead>
+      <tbody>
+        <tr><td>📱 iPhone 15 Pro Max</td><td>4,128</td></tr>
+        <tr><td>💻 MacBook Pro 14" M3</td><td>2,940</td></tr>
+        <tr><td>📱 iPad Pro 12.9"</td><td>2,210</td></tr>
+        <tr><td>🎧 AirPods Max</td><td>1,876</td></tr>
+        <tr><td>⌚ Apple Watch Ultra 2</td><td>1,520</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">Recent Customer Reviews</div>
+  <table class="data">
+    <thead><tr><th>Product</th><th>Customer</th><th>Rating</th><th>Comment</th><th>Date</th></tr></thead>
+    <tbody>
+      <tr><td>iPhone 15 Pro Max</td><td>Ahmed Al-Thani</td><td>★★★★★</td><td>Genuine product, fast delivery to Doha. Very happy!</td><td>2026-04-25</td></tr>
+      <tr><td>MacBook Air M3</td><td>Fatima Khan</td><td>★★★★★</td><td>Excellent packaging and original AppleCare included.</td><td>2026-04-24</td></tr>
+      <tr><td>AirPods Pro</td><td>Omar Al-Mansoori</td><td>★★★★☆</td><td>Quick delivery. Could improve packaging quality.</td><td>2026-04-23</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+<script src="assets/seller.js"></script>
+</body>
+</html>
