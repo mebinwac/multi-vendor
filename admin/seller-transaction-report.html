@@ -111,42 +111,45 @@
 
 <div class="page-header">
   <h1>Seller Transaction Report</h1>
-  <div class="actions">
-    <button class="btn btn-primary" onclick="downloadCsv()">📥 Download CSV</button>
-  </div>
 </div>
 <div class="content">
-<!-- Filter -->
-  <div class="toolbar">
-    <select>
-      <option>Daily</option>
-      <option selected>Monthly</option>
-      <option>Yearly</option>
-      <option>Custom range</option>
+
+  <!-- Filter section -->
+  <div style="background:#fff; border:1px solid #e3e3e3; border-radius:2px; padding: 22px 26px; margin-bottom: 22px;">
+    <h2 style="margin:0 0 18px; font-size:18px; font-weight:400; color:#41362f; padding-bottom:10px; border-bottom:1px solid #e3e3e3;">Filter</h2>
+
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>Period</label>
+      <select id="period-sel" style="max-width:200px;">
+        <option value="day" selected>Day</option>
+        <option value="month">Month</option>
+        <option value="year">Year</option>
+      </select>
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>From <span style="color:#e22626;">*</span></label>
+      <input type="date" id="from-date" style="max-width:280px;">
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>To <span style="color:#e22626;">*</span></label>
+      <input type="date" id="to-date" style="max-width:280px;">
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>Empty Rows</label>
+      <select id="empty-rows" style="max-width:120px;">
+        <option value="no" selected>No</option>
+        <option value="yes">Yes</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Export-to bar -->
+  <div style="display:flex; justify-content:flex-end; align-items:center; gap:10px; margin-bottom: 12px;">
+    <span style="font-size:13px; color:#41362f;">Export to:</span>
+    <select id="export-format" style="padding:6px 10px; border:1px solid #ccc; border-radius:2px; font-size:13px; background:#fff; min-width:100px;">
+      <option value="csv" selected>CSV</option>
     </select>
-    <input type="date" value="2026-03-26" title="From date">
-    <input type="date" value="2026-04-25" title="To date">
-    <select>
-      <option>All sellers</option>
-      <option>Aisha Al-Mansoori (S101)</option>
-      <option>Mohammed Khalid (S102)</option>
-      <option>Sara Hassan Boutique (S103)</option>
-      <option>Layla Trading (S104)</option>
-      <option>Doha Electronics (S105)</option>
-      <option>Pearl Fashion Co. (S106)</option>
-      <option>Souq Al-Bahar (S107)</option>
-    </select>
-    <select>
-      <option>All transactions</option>
-      <option>Sales only</option>
-      <option>Refunds only</option>
-      <option>Payouts only</option>
-      <option>Fees only</option>
-      <option>Adjustments only</option>
-    </select>
-    <button class="btn">🔍 Apply Filter</button>
-    <span class="spacer"></span>
-    <span class="records">312 transactions · 7 sellers</span>
+    <button class="btn" onclick="downloadCsv()">Export</button>
   </div>
 
   <!-- Summary cards -->
