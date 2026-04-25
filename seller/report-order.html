@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order Report — Advanced Report</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Samsung Retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="sales.html">Order</a>
+        <a class="" href="sales-invoice.html" style="display:none;">Invoice</a>
+        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <div class="nav-group open">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📊</span><span>Advanced Report</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="advanced-report.html">Sales Overview</a>
+        <a class="active" href="report-order.html">Order Report</a>
+        <a class="" href="report-account.html">Seller Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<h1 class="page-title">Order Report</h1>
+
+<!-- Filter / generate report panel -->
+<div class="panel">
+  <div class="panel-head">Generate Report</div>
+  <div class="panel-body">
+    <div class="field"><label>Date Range</label><select id="date-range">
+      <option>Today</option>
+      <option>Yesterday</option>
+      <option>Last 7 days</option>
+      <option selected>Last 30 days</option>
+      <option>This month</option>
+      <option>Last month</option>
+      <option>This year</option>
+      <option>Custom range</option>
+    </select></div>
+    <div class="field"><label>From Date</label><input type="date" value="2026-03-26"></div>
+    <div class="field"><label>To Date</label><input type="date" value="2026-04-25"></div>
+    <div class="field"><label>Order Status</label><select>
+      <option>All</option>
+      <option>Complete</option>
+      <option>Processing</option>
+      <option>Pending</option>
+      <option>Canceled</option>
+      <option>On Hold</option>
+    </select></div>
+    <div class="field"><label>Currency</label><select><option selected>QAR</option><option>USD</option><option>AED</option></select></div>
+    <div class="field"><label>Group By</label><select><option>None</option><option selected>Day</option><option>Week</option><option>Month</option><option>Product</option><option>Customer</option></select></div>
+
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:18px; flex-wrap:wrap;">
+      <button class="btn" onclick="alert('Report refreshed')">🔄 Refresh Report</button>
+      <button class="btn-primary btn" onclick="downloadReport('csv')">📥 Download CSV</button>
+    </div>
+  </div>
+</div>
+
+<!-- Summary cards (order-data only — no seller revenue) -->
+<div class="stat-grid">
+  <div class="stat-card green"><div><div class="stat-num">187</div><div class="stat-lbl">Orders in Period</div></div><div class="stat-icon">🛒</div></div>
+  <div class="stat-card blue"><div><div class="stat-num">312</div><div class="stat-lbl">Items Sold</div></div><div class="stat-icon">📦</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">QAR 1,329</div><div class="stat-lbl">Avg Order Value</div></div><div class="stat-icon">📊</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">8</div><div class="stat-lbl">Refunded Orders</div></div><div class="stat-icon">↺</div></div>
+</div>
+
+<!-- Recent reports -->
+<div class="panel">
+  <div class="panel-head">Recently Generated Reports</div>
+  <div style="overflow-x:auto;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Report ID</th>
+        <th>Type</th>
+        <th>Period</th>
+        <th>Generated At</th>
+        <th>Size</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>RPT-1042</td>
+        <td>Order Report</td>
+        <td>Mar 26 — Apr 25, 2026</td>
+        <td>Apr 25, 2026 14:32:11</td>
+        <td>248 KB</td>
+        <td><span class="status-pill complete">Ready</span></td>
+        <td><a href="#" onclick="alert('Downloading RPT-1042.pdf...'); return false;">⬇ Download</a></td>
+      </tr>
+      <tr>
+        <td>RPT-1041</td>
+        <td>Order Report</td>
+        <td>Apr 1 — Apr 25, 2026</td>
+        <td>Apr 25, 2026 09:14:23</td>
+        <td>124 KB</td>
+        <td><span class="status-pill complete">Ready</span></td>
+        <td><a href="#" onclick="alert('Downloading RPT-1041.csv...'); return false;">⬇ Download</a></td>
+      </tr>
+      <tr>
+        <td>RPT-1040</td>
+        <td>Order Report</td>
+        <td>Q1 2026 (Jan — Mar)</td>
+        <td>Apr 1, 2026 08:05:00</td>
+        <td>89 KB</td>
+        <td><span class="status-pill complete">Ready</span></td>
+        <td><a href="#" onclick="alert('Downloading RPT-1040.csv...'); return false;">⬇ Download</a></td>
+      </tr>
+      <tr>
+        <td>RPT-1039</td>
+        <td>Order Report</td>
+        <td>Mar 2026 (full month)</td>
+        <td>Mar 31, 2026 23:55:18</td>
+        <td>312 KB</td>
+        <td><span class="status-pill complete">Ready</span></td>
+        <td><a href="#" onclick="alert('Downloading RPT-1039.pdf...'); return false;">⬇ Download</a></td>
+      </tr>
+      <tr>
+        <td>RPT-1038</td>
+        <td>Order Report</td>
+        <td>Feb 2026 (full month)</td>
+        <td>Mar 1, 2026 00:12:44</td>
+        <td>156 KB</td>
+        <td><span class="status-pill complete">Ready</span></td>
+        <td><a href="#" onclick="alert('Downloading RPT-1038.csv...'); return false;">⬇ Download</a></td>
+      </tr>
+      <tr>
+        <td>RPT-1037</td>
+        <td>Order Report</td>
+        <td>Jan 2026 (full month)</td>
+        <td>Feb 1, 2026 03:33:21</td>
+        <td>72 KB</td>
+        <td><span class="status-pill complete">Ready</span></td>
+        <td><a href="#" onclick="alert('Downloading RPT-1037.csv...'); return false;">⬇ Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- Preview of report data -->
+<div class="panel">
+  <div class="panel-head">Report Preview — Last 30 days
+    <div class="head-actions">
+      <span style="font-size:13px; color:#7a8694;">Showing top 10 days</span>
+    </div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Orders</th>
+        <th>Items Sold</th>
+        <th>Gross Revenue</th>
+        <th>Avg Order Value</th>
+        <th>Refunds</th>
+        <th>Status Mix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Apr 25, 2026</td><td>7</td><td>9</td><td>QAR 18,420.00</td><td>QAR 2,631.43</td><td>QAR 0.00</td><td>5 ✓ · 1 ⏳ · 1 ⚙</td></tr>
+      <tr><td>Apr 24, 2026</td><td>5</td><td>9</td><td>QAR 34,509.00</td><td>QAR 6,901.80</td><td>QAR 0.00</td><td>4 ✓ · 1 ⚙</td></tr>
+      <tr><td>Apr 23, 2026</td><td>3</td><td>5</td><td>QAR 4,697.00</td><td>QAR 1,565.67</td><td>QAR 899.00</td><td>2 ✓ · 1 ✗</td></tr>
+      <tr><td>Apr 22, 2026</td><td>4</td><td>6</td><td>QAR 9,700.00</td><td>QAR 2,425.00</td><td>QAR 0.00</td><td>3 ✓ · 1 ⚙</td></tr>
+      <tr><td>Apr 21, 2026</td><td>3</td><td>4</td><td>QAR 4,200.00</td><td>QAR 1,400.00</td><td>QAR 0.00</td><td>3 ✓</td></tr>
+      <tr><td>Apr 20, 2026</td><td>3</td><td>5</td><td>QAR 13,290.00</td><td>QAR 4,430.00</td><td>QAR 5,400.00</td><td>1 ✓ · 1 ✗ · 1 ⏳</td></tr>
+      <tr><td>Apr 19, 2026</td><td>3</td><td>4</td><td>QAR 3,190.00</td><td>QAR 1,063.33</td><td>QAR 0.00</td><td>3 ✓</td></tr>
+      <tr><td>Apr 18, 2026</td><td>4</td><td>6</td><td>QAR 8,700.00</td><td>QAR 2,175.00</td><td>QAR 0.00</td><td>4 ✓</td></tr>
+      <tr><td>Apr 17, 2026</td><td>2</td><td>3</td><td>QAR 5,800.00</td><td>QAR 2,900.00</td><td>QAR 0.00</td><td>2 ✓</td></tr>
+      <tr><td>Apr 16, 2026</td><td>5</td><td>8</td><td>QAR 12,400.00</td><td>QAR 2,480.00</td><td>QAR 0.00</td><td>4 ✓ · 1 ⚙</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="font-weight:600; background:#f7f9fb;">
+        <td>Total (last 30 days)</td>
+        <td>187</td>
+        <td>312</td>
+        <td>QAR 248,560.00</td>
+        <td>QAR 1,329.20</td>
+        <td>QAR 6,299.00</td>
+        <td>—</td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+
+<script src="assets/seller.js?v=1777095503"></script>
+<script>
+  function downloadReport(format) {
+    const range = document.getElementById('date-range').value;
+    alert('Generating Order Report (' + format.toUpperCase() + ') for ' + range + '...\n\nFile: order-report-' + Date.now() + '.' + format);
+  }
+</script>
+</body>
+</html>

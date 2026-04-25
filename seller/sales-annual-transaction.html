@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Import Products</title>
+<title>Annual Transaction — Sales</title>
 <link rel="stylesheet" href="assets/seller.css">
 </head>
 <body>
@@ -28,20 +28,20 @@
         <a class="" href="product-new-config.html">Add Configurable Product</a>
       </div>
     </div>
-    <div class="nav-group">
+    <div class="nav-group open">
       <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
       <div class="submenu">
         <a class="" href="sales.html">Order</a>
         <a class="" href="sales-invoice.html" style="display:none;">Invoice</a>
-        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+        <a class="active" href="sales-annual-transaction.html">Annual Transaction</a>
       </div>
     </div>
     <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
     <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
-    <div class="nav-group open">
+    <div class="nav-group">
       <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
       <div class="submenu">
-        <a class="active" href="import.html">Import</a>
+        <a class="" href="import.html">Import</a>
         <a class="" href="export.html">Export</a>
         <a class="" href="upload-images.html">Upload Images</a>
         <a class="" href="import-sources.html">Import Sources</a>
@@ -61,7 +61,6 @@
 </aside>
 
 <main class="main">
-
 <div class="topbar">
   <div class="left-controls">
     <button class="menu-toggle" title="Toggle menu">☰</button>
@@ -78,27 +77,79 @@
 
 <div class="content">
 
-<h1 class="page-title">Import Products</h1>
-<div class="fieldset">
-  <div class="legend">Upload CSV</div>
-  <div class="body">
-    <div class="field"><label>Entity Type</label><select><option>Products</option><option>Stock Sources</option></select></div>
-    <div class="field"><label>Action</label><select><option>Add/Update</option><option>Replace</option><option>Delete</option></select></div>
-    <div class="field"><label>Validation Strategy</label><select><option>Stop on first error</option><option>Skip errors</option></select></div>
-    <div class="field"><label>CSV File</label><div><button class="btn">Choose File</button> <span style="color:#95a5a6; margin-left:8px;">No file chosen</span></div></div>
-    <div class="field"><label>Field Separator</label><input type="text" value=","></div>
+<h1 class="page-title">Annual Transaction</h1>
+
+<div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+  <span style="font-size:13px; color:#7a8694;">Year:</span>
+  <select class="btn"><option>2026</option><option>2025</option><option>2024</option></select>
+  <button class="btn">📥 Export PDF</button>
+  <button class="btn">📥 Export CSV</button>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card green"><div><div class="stat-num">QAR 248,560</div><div class="stat-lbl">Total Sales (2026 YTD)</div></div><div class="stat-icon">💰</div></div>
+  <div class="stat-card blue"><div><div class="stat-num">187</div><div class="stat-lbl">Total Orders</div></div><div class="stat-icon">🛒</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">QAR 28,962</div><div class="stat-lbl">Commission Paid</div></div><div class="stat-icon">📊</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">QAR 219,598</div><div class="stat-lbl">Net Earnings</div></div><div class="stat-icon">✓</div></div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">Monthly Breakdown — 2026</div>
+  <div style="overflow-x:auto;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Orders</th>
+        <th>Gross Sales</th>
+        <th>Commission</th>
+        <th>Currency</th>
+        <th>Net Earnings</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>April 2026 (current)</td><td>62</td><td>84,210.0000</td><td>10,105.2000</td><td>QAR</td><td>74,104.8000</td><td><span class="status-pill processing">In Progress</span></td></tr>
+      <tr><td>March 2026</td><td>48</td><td>72,890.0000</td><td>8,746.8000</td><td>QAR</td><td>64,143.2000</td><td><span class="status-pill complete">Settled</span></td></tr>
+      <tr><td>February 2026</td><td>35</td><td>54,320.0000</td><td>6,518.4000</td><td>QAR</td><td>47,801.6000</td><td><span class="status-pill complete">Settled</span></td></tr>
+      <tr><td>January 2026</td><td>42</td><td>37,140.0000</td><td>3,591.6000</td><td>QAR</td><td>33,548.4000</td><td><span class="status-pill complete">Settled</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="font-weight:600; background:#f7f9fb;">
+        <td>Total</td>
+        <td>187</td>
+        <td>248,560.0000</td>
+        <td>28,961.9999</td>
+        <td>QAR</td>
+        <td>219,598.0001</td>
+        <td>—</td>
+      </tr>
+    </tfoot>
+  </table>
   </div>
 </div>
-<div style="display:flex; gap:8px; justify-content:flex-end;">
-  <button class="btn">Download Sample CSV</button>
-  <button class="btn">Validate</button>
-  <button class="btn-primary btn" onclick="alert('Import started')">Start Import</button>
+
+<div class="panel">
+  <div class="panel-head">Tax Summary</div>
+  <div class="panel-body">
+    <table class="data" style="border:none;">
+      <tbody>
+        <tr><td style="width:280px;"><strong>VAT Registration</strong></td><td>VAT-2024-9921</td></tr>
+        <tr><td><strong>Annual VAT Collected</strong></td><td>QAR 12,428.00</td></tr>
+        <tr><td><strong>Annual VAT Filed</strong></td><td>QAR 9,321.00</td></tr>
+        <tr><td><strong>Outstanding VAT</strong></td><td>QAR 3,107.00</td></tr>
+        <tr><td><strong>Last Filed</strong></td><td>2026-03-31 (Q1 2026)</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 </div>
+
 <div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
 </main>
 </div>
+
 <script src="assets/seller.js?v=1777095503"></script>
 </body>
 </html>

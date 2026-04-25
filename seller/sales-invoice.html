@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice — Sales</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Samsung Retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <div class="nav-group open">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="sales.html">Order</a>
+        <a class="active" href="sales-invoice.html" style="display:none;">Invoice</a>
+        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📊</span><span>Advanced Report</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="advanced-report.html">Sales Overview</a>
+        <a class="" href="report-order.html">Order Report</a>
+        <a class="" href="report-account.html">Seller Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<h1 class="page-title">Invoice</h1>
+
+<div class="panel">
+  <div class="panel-head">
+    Table Invoice
+    <div class="head-actions" style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:13px; color:#7a8694;">Show</span>
+      <select class="btn"><option>20</option><option>50</option><option>100</option></select>
+      <span style="font-size:13px; color:#7a8694;">entries</span>
+      <span style="font-size:13px; color:#7a8694; margin-left:18px;">Search:</span>
+      <input type="text" placeholder="" style="padding:6px 10px; border:1px solid #d0d7de; border-radius:3px; font-size:13px; width:200px;">
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Invoice ↕</th>
+        <th>Order #</th>
+        <th>Created At</th>
+        <th>Customer</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>INV-1042</td><td>449</td><td>Apr 25, 2026</td><td>Ahmed Al-Thani</td><td>5,899.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=449">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1041</td><td>448</td><td>Apr 25, 2026</td><td>Fatima Khan</td><td>4,499.0000</td><td>QAR</td><td><span class="status-pill pending">pending</span></td><td><a href="sales-order-view.html?id=448">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1040</td><td>447</td><td>Apr 24, 2026</td><td>Omar Al-Mansoori</td><td>8,710.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=447">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1039</td><td>445</td><td>Apr 24, 2026</td><td>Khalid Trading Co.</td><td>24,500.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=445">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1038</td><td>444</td><td>Apr 23, 2026</td><td>Sara Boutique</td><td>3,798.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=444">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1037</td><td>442</td><td>Apr 23, 2026</td><td>Yousef Al-Kuwari</td><td>6,199.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=442">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1036</td><td>441</td><td>Apr 22, 2026</td><td>Hassan Mahmoud</td><td>3,300.0000</td><td>QAR</td><td><span class="status-pill pending">pending</span></td><td><a href="sales-order-view.html?id=441">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1035</td><td>440</td><td>Apr 22, 2026</td><td>Noor Abdullah</td><td>4,800.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=440">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1034</td><td>439</td><td>Apr 22, 2026</td><td>Aisha Al-Mansoori</td><td>1,600.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=439">View</a> · <a href="#">Print</a></td></tr>
+      <tr><td>INV-1033</td><td>438</td><td>Apr 21, 2026</td><td>Mohammed Khalid</td><td>900.0000</td><td>QAR</td><td><span class="status-pill complete">paid</span></td><td><a href="sales-order-view.html?id=438">View</a> · <a href="#">Print</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="pager" style="border-top:1px solid #ebeef2;">
+    <span style="margin-right:auto; color:#7a8694; font-size:13px;">Showing 1 to 10 of 142 entries</span>
+    <button class="pbtn">Previous</button>
+    <button class="pbtn active">1</button>
+    <button class="pbtn">2</button>
+    <button class="pbtn">3</button>
+    <button class="pbtn">Next</button>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+
+<script src="assets/seller.js?v=1777095503"></script>
+</body>
+</html>

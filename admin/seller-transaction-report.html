@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>Seller Transaction Report / Magento Admin</title>
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="admin">
+
+<aside class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon points="50,5 95,30 95,75 50,100 5,75 5,30" fill="#eb5202"/><polygon points="50,15 50,75 35,67 35,40 50,32 65,40 65,67 50,75" fill="#fff" opacity="0.4"/></svg>
+  </div>
+  <a class="nav-item " href="index.html"><span class="icon">⊞</span><span>DASHBOARD</span></a>
+  <div class="nav-item active" onclick="mpToggle()"><span class="icon">◇</span><span>MARKET<br>PLACE</span><span class="badge">0</span></div>
+  <div class="nav-item"><span class="icon">◊</span><span>LANDOF<br>CODER</span></div>
+  <div class="nav-item"><span class="icon">⋮⋮</span><span>VENUSTHEME<br>EXTENSIONS</span></div>
+  <div class="nav-item"><span class="icon">✦</span><span>VENUS<br>THEME</span></div>
+  <div class="nav-item"><span class="icon">$</span><span>SALES</span></div>
+  <div class="nav-item"><span class="icon">○</span><span>CLIQ PAY</span></div>
+  <div class="nav-item"><span class="icon">⟲</span><span>INVENTORY<br>SYNC</span></div>
+  <div class="nav-item"><span class="icon">◎</span><span>MILESTONES</span></div>
+  <div class="nav-item"><span class="icon">▣</span><span>PRODUCT<br>EXPORT</span></div>
+  <div class="nav-item"><span class="icon">▦</span><span>CATALOG</span></div>
+  <div class="nav-item"><span class="icon">W</span><span>WAC</span></div>
+</aside>
+
+
+<div id="mp-backdrop" class="show" onclick="mpClose()"></div>
+<aside id="mp-menu" class="open">
+  <div class="mp-head">
+    <h2>Market Place</h2>
+    <button class="mp-close" onclick="mpClose()">✕</button>
+  </div>
+  <div class="mp-grid">
+    <div>
+      <h3>Seller</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-sellers.html">Manage Sellers</a></li>
+        <li><a class="mp-link" href="manage-pending-sellers.html">Manage Pending Sellers</a><span class="mp-bell">0</span></li>
+        <li><a class="mp-link" href="manage-groups.html">Manage Groups</a></li>
+        <li style="display:none;"><a class="mp-link" href="messages.html">Messages</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Sales</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-orders.html">Manage Orders</a></li>
+        <li><a class="mp-link" href="manage-order-transactions.html">Manage Order Transactions</a></li>
+        <li style="display:none;"><a class="mp-link" href="manage-invoices.html">Manage Invoices</a></li>
+        <li style="display:none;"><a class="mp-link" href="manage-refunds.html">Manage Refunds</a></li>
+      </ul>
+    </div>
+    <div style="display:none;">
+      <h3>Reviews And Ratings</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-reviews.html">Manage Reviews</a></li>
+        <li><a class="mp-link" href="manage-ratings.html">Manage Ratings</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Commissions</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-product-commissions.html">Manage Product Commissions</a></li>
+        <li><a class="mp-link" href="manage-shipping-commissions.html">Manage Shipping Commissions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Report</h3>
+      <ul>
+        <li><a class="mp-link" href="seller-order-report.html">Seller Order Report</a></li>
+        <li><a class="mp-link" href="seller-transaction-report.html">Seller Transaction Report</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Payments and Amounts</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-amount-transactions.html">Manage Amount Transactions</a></li>
+        <li><a class="mp-link" href="manage-seller-amounts.html">Manage Seller Amounts</a></li>
+        <li style="display:none;"><a class="mp-link" href="payment-methods.html">Payment Methods</a></li>
+        <li><a class="mp-link" href="all-withdrawal-requests.html">All Withdrawal Requests</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Core</h3>
+      <ul><li><a class="mp-link" href="configuration.html">Configuration</a></li></ul>
+    </div>
+    <div>
+      <h3>Catalog</h3>
+      <ul>
+        <li><a class="mp-link" href="manage-products.html">Manage Products</a></li>
+        <li><a class="mp-link" href="manage-pending-products.html">Manage Pending Products</a><span class="mp-bell">0</span></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="topbar">
+  <div class="breadcrumb"><button class="menu-btn" onclick="mpToggle()">☰ Market Place</button> <span>Market Place / Report / Seller Transaction Report</span></div>
+  <div class="topright">
+    <span class="sysmsg">System Messages: 3 ▾</span>
+    <button class="icon-btn" title="Search">🔍</button>
+    <button class="icon-btn" title="Notifications">🔔<span class="badge">99+</span></button>
+    <span class="user">👤 vishnupd ▾</span>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>Seller Transaction Report</h1>
+  <div class="actions">
+    <button class="btn btn-primary" onclick="downloadCsv()">📥 Download CSV</button>
+  </div>
+</div>
+<div class="content">
+<!-- Filter -->
+  <div class="toolbar">
+    <select>
+      <option>Daily</option>
+      <option selected>Monthly</option>
+      <option>Yearly</option>
+      <option>Custom range</option>
+    </select>
+    <input type="date" value="2026-03-26" title="From date">
+    <input type="date" value="2026-04-25" title="To date">
+    <select>
+      <option>All sellers</option>
+      <option>Aisha Al-Mansoori (S101)</option>
+      <option>Mohammed Khalid (S102)</option>
+      <option>Sara Hassan Boutique (S103)</option>
+      <option>Layla Trading (S104)</option>
+      <option>Doha Electronics (S105)</option>
+      <option>Pearl Fashion Co. (S106)</option>
+      <option>Souq Al-Bahar (S107)</option>
+    </select>
+    <select>
+      <option>All transactions</option>
+      <option>Sales only</option>
+      <option>Refunds only</option>
+      <option>Payouts only</option>
+      <option>Fees only</option>
+      <option>Adjustments only</option>
+    </select>
+    <button class="btn">🔍 Apply Filter</button>
+    <span class="spacer"></span>
+    <span class="records">312 transactions · 7 sellers</span>
+  </div>
+
+  <!-- Summary cards -->
+  <div class="stat-row" style="margin-top:14px;">
+    <div class="stat"><div class="label">Total Transactions</div><div class="value">312</div></div>
+    <div class="stat"><div class="label">Total Credits</div><div class="value lifetime">QAR 542,180</div></div>
+    <div class="stat"><div class="label">Total Debits</div><div class="value">QAR 162,940</div></div>
+    <div class="stat"><div class="label">Net Settlement</div><div class="value">QAR 379,240</div></div>
+    <div class="stat"><div class="label">Active Sellers</div><div class="value">7</div></div>
+  </div>
+
+  <!-- Report table -->
+  <table class="data" style="margin-top:14px;">
+    <thead><tr>
+      <th>Date</th>
+      <th>Seller</th>
+      <th>Seller ID</th>
+      <th>Reference</th>
+      <th>Type</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Net to Seller</th>
+      <th>Status</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Apr 25, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>ORD-100247</td><td>Sale</td><td>QAR 5,899.00</td><td>QAR    --</td><td>QAR 5,191.12</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 25, 2026</td><td>Sara Hassan Boutique</td><td>S103</td><td>ORD-100245</td><td>Sale</td><td>QAR 8,710.00</td><td>QAR    --</td><td>QAR 7,664.80</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 25, 2026</td><td>Doha Electronics</td><td>S105</td><td>WR-128</td><td>Payout</td><td>QAR    --</td><td>QAR 3,640.00</td><td>QAR -3,640.00</td><td><span class="status pending">pending</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Mohammed Khalid</td><td>S102</td><td>RFD-RF-201</td><td>Refund</td><td>QAR    --</td><td>QAR  764.15</td><td>QAR  -764.15</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Souq Al-Bahar</td><td>S107</td><td>ORD-100231</td><td>Sale</td><td>QAR 7,650.00</td><td>QAR    --</td><td>QAR 6,732.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 24, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>WR-127</td><td>Payout</td><td>QAR    --</td><td>QAR 6,500.00</td><td>QAR -6,500.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 23, 2026</td><td>Pearl Fashion Co.</td><td>S106</td><td>FEE-Q1</td><td>Fee</td><td>QAR    --</td><td>QAR  500.00</td><td>QAR  -500.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 23, 2026</td><td>Doha Electronics</td><td>S105</td><td>ORD-100229</td><td>Sale</td><td>QAR 3,200.00</td><td>QAR    --</td><td>QAR 2,816.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 23, 2026</td><td>Sara Hassan Boutique</td><td>S103</td><td>ORD-100228</td><td>Sale</td><td>QAR 4,499.00</td><td>QAR    --</td><td>QAR 3,959.12</td><td><span class="status processing">processing</span></td></tr>
+      <tr><td>Apr 22, 2026</td><td>Mohammed Khalid</td><td>S102</td><td>ORD-100225</td><td>Sale</td><td>QAR 1,299.00</td><td>QAR    --</td><td>QAR 1,103.15</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 22, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>ADJ-018</td><td>Adjust</td><td>QAR  120.00</td><td>QAR    --</td><td>QAR   120.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 22, 2026</td><td>Souq Al-Bahar</td><td>S107</td><td>ORD-100222</td><td>Sale</td><td>QAR 12,750.00</td><td>QAR    --</td><td>QAR 11,475.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 21, 2026</td><td>Doha Electronics</td><td>S105</td><td>ORD-100220</td><td>Sale</td><td>QAR 4,800.00</td><td>QAR    --</td><td>QAR 4,224.00</td><td><span class="status complete">complete</span></td></tr>
+      <tr><td>Apr 21, 2026</td><td>Layla Trading</td><td>S104</td><td>ORD-100218</td><td>Sale</td><td>QAR  899.00</td><td>QAR    --</td><td>QAR   764.15</td><td><span class="status canceled">canceled</span></td></tr>
+      <tr><td>Apr 21, 2026</td><td>Aisha Al-Mansoori</td><td>S101</td><td>ORD-100215</td><td>Sale</td><td>QAR 1,600.00</td><td>QAR    --</td><td>QAR 1,360.00</td><td><span class="status complete">complete</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="font-weight:600; background:#f5f5f5;">
+        <td colspan="5">Period totals</td>
+        <td>QAR 542,180.00</td>
+        <td>QAR 162,940.00</td>
+        <td>QAR 379,240.00</td>
+        <td>—</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="pager">
+    <span>‹</span>
+    <button class="pager-btn active">1</button>
+    <button class="pager-btn">2</button>
+    <button class="pager-btn">3</button>
+    <span>›</span>
+    <span style="margin-left:auto;">of 21 pages | View <input type="number" value="20"></span>
+  </div>
+</div>
+<script>
+  function downloadCsv() {
+    const fname = 'seller-transaction-report-' + Date.now() + '.csv';
+    alert('Generating CSV...
+
+File: ' + fname);
+  }
+</script>
+<div class="footer"><strong>Magento</strong> ver. 2.4.6 — © 2025 Magento Commerce Inc. All rights reserved. <a href="#" style="float:right;">Privacy Policy</a> · <a href="#" style="float:right; margin-right:14px;">Account Activity</a> · <a href="#" style="float:right; margin-right:14px;">Report an Issue</a></div>
+</main>
+</div>
+<script src="assets/admin.js"></script>
+</body>
+</html>

@@ -49,6 +49,13 @@
       <li><a class="mp-link" href="manage-product-commissions.html">Manage Product Commissions</a></li>
       <li><a class="mp-link" href="manage-shipping-commissions.html">Manage Shipping Commissions</a></li>
     </ul></div>
+    <div>
+      <h3>Report</h3>
+      <ul>
+        <li><a class="mp-link" href="seller-order-report.html">Seller Order Report</a></li>
+        <li><a class="mp-link" href="seller-transaction-report.html">Seller Transaction Report</a></li>
+      </ul>
+    </div>
     <div><h3>Payments and Amounts</h3><ul>
       <li><a class="mp-link" href="manage-amount-transactions.html">Manage Amount Transactions</a></li>
       <li><a class="mp-link" href="manage-seller-amounts.html">Manage Seller Amounts</a></li>
@@ -126,6 +133,49 @@
       document.querySelector('.split-menu')?.classList.remove('show');
     }
   });
+
+  // Edit mode: read query string and pre-fill form
+  (function(){
+    var p = new URLSearchParams(location.search);
+    if (!p.get('id')) return;
+
+    // Update H1, breadcrumb, page title for edit mode
+    var ruleId = p.get('id');
+    var ruleTitle = p.get('title') || ('#' + ruleId);
+    var h1 = document.querySelector('.page-header h1');
+    if (h1) h1.textContent = 'Edit Commission Rule: ' + ruleTitle;
+    document.title = 'Edit Commission Rule / Magento Admin';
+    var crumb = document.querySelector('.breadcrumb span');
+    if (crumb) crumb.textContent = 'Market Place / Commissions / Edit Commission';
+
+    // Helper: find a field by its label text
+    function setByLabel(label, val) {
+      if (val == null || val === '') return;
+      var fields = document.querySelectorAll('.field');
+      for (var i = 0; i < fields.length; i++) {
+        var lbl = fields[i].querySelector('label');
+        if (lbl && lbl.textContent.trim().toLowerCase().indexOf(label.toLowerCase()) === 0) {
+          var input = fields[i].querySelector('input[type=text], input[type=number], textarea');
+          var sel = fields[i].querySelector('select');
+          if (input) { input.value = val; return; }
+          if (sel) {
+            for (var j = 0; j < sel.options.length; j++) {
+              if (sel.options[j].text.toLowerCase().indexOf(val.toLowerCase()) >= 0) { sel.selectedIndex = j; return; }
+            }
+          }
+          return;
+        }
+      }
+    }
+
+    setByLabel('Rule Name', ruleTitle);
+    setByLabel('Priority', p.get('priority'));
+    setByLabel('Value', p.get('commission'));
+    var typeMap = { fixed: 'Fixed', percent: 'Percentage', tier: 'Tiered' };
+    if (p.get('type')) setByLabel('Commission Type', typeMap[p.get('type')] || p.get('type'));
+    var statusVal = p.get('active') === '1' ? 'Active' : 'Inactive';
+    setByLabel('Status', statusVal);
+  })();
 </script>
 </body>
 </html>
