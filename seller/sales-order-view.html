@@ -5,6 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Order #449 — Detail</title>
 <link rel="stylesheet" href="assets/seller.css">
+<style>
+  /* Order-view layout (matches Magento admin sales/order/view) */
+  .ord-head { display:flex; align-items:center; justify-content:space-between; padding: 0 0 14px; flex-wrap:wrap; gap:10px; }
+  .ord-head h1 { margin:0; font-size:30px; font-weight:300; color:#2c3e50; }
+  .ord-head h1 .substatus { font-size:13px; color:#7a8694; font-weight:400; margin-left:8px; }
+
+  .ord-actions { background:#fff; border:1px solid #e7eaf0; border-radius:4px; padding:10px 16px; display:flex; gap:0; justify-content:flex-end; align-items:center; margin-bottom: 16px; }
+  .ord-actions a, .ord-actions button { background:none; border:none; padding:8px 16px; font-size:14px; color:#2c3e50; cursor:pointer; border-right:1px solid #ebeef2; text-decoration:none; }
+  .ord-actions a:last-child, .ord-actions button:last-child { border-right:none; }
+  .ord-actions a:hover, .ord-actions button:hover { color:#1abc9c; }
+  .ord-actions .back-link { color:#1abc9c; font-weight:500; }
+
+  .ord-layout { display:block; }
+
+  .ord-content { min-width:0; }
+
+  .ord-sec-title { font-size:18px; color:#2c3e50; font-weight:400; margin: 28px 0 14px; padding-bottom:8px; border-bottom:1px solid #ebeef2; }
+
+  .ord-info { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width: 980px) { .ord-info { grid-template-columns:1fr; } }
+  .ord-info .info-block h3 { font-size:15px; color:#2c3e50; font-weight:600; margin: 0 0 10px; padding-bottom:8px; border-bottom: 1px solid #ebeef2; display:flex; justify-content:space-between; align-items:center; }
+  .ord-info .info-block table { width:100%; border-collapse:collapse; }
+  .ord-info .info-block td { padding:8px 0; font-size:13px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+  .ord-info .info-block td:first-child { color:#7a8694; width:46%; }
+  .ord-info .info-block td:last-child { text-align:right; color:#2c3e50; }
+
+  .privacy-mask { position:relative; min-height:120px; }
+  .privacy-mask .blurred { filter:blur(6px); user-select:none; pointer-events:none; }
+  .privacy-mask .overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(255,255,255,.55); border-radius:4px; text-align:center; }
+
+  /* Items Ordered table */
+  .items-tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  .items-tbl thead th { background:#f7f9fb; color:#5a6878; font-weight:600; font-size:12px; padding:10px; text-align:left; border-bottom:1px solid #ebeef2; }
+  .items-tbl tbody td { padding:11px 10px; border-bottom:1px solid #ebeef2; vertical-align:top; }
+  .items-tbl tbody tr:hover td { background:#fafbfd; }
+
+  /* Order Total grid */
+  .ord-total { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top: 24px; }
+  @media (max-width: 980px) { .ord-total { grid-template-columns:1fr; } }
+  .ord-total .totals-tbl { width:100%; border-collapse:collapse; }
+  .ord-total .totals-tbl td { padding:9px 0; font-size:14px; border-bottom:1px solid #ebeef2; }
+  .ord-total .totals-tbl td:first-child { color:#7a8694; }
+  .ord-total .totals-tbl td:last-child { text-align:right; color:#2c3e50; font-weight:500; }
+  .ord-total .totals-tbl tr.grand td { font-size:16px; font-weight:600; color:#1abc9c; }
+
+  .status-pill.shipped { background:#d6e7fa; color:#0a4faa; }
+
+  .com-form { background:#fff; padding:14px; border:1px solid #ebeef2; border-radius:4px; }
+  .com-form .field { display:grid; grid-template-columns: 1fr; gap:6px; padding:8px 0; }
+  .com-form label { font-size:13px; color:#2c3e50; font-weight:500; }
+  .com-form select, .com-form textarea { padding:8px 10px; border:1px solid #d0d7de; border-radius:3px; font-size:13px; width:100%; }
+  .com-form .checks { display:flex; flex-direction:column; gap:6px; margin: 8px 0 12px; font-size:13px; }
+  .com-form .submit-btn { background:#404040; color:#fff; border:none; padding:9px 18px; border-radius:3px; cursor:pointer; font-size:13px; font-weight:500; }
+  .com-form .submit-btn:hover { background:#1abc9c; }
+
+  /* History timeline */
+  .history { background:#fff; padding:0; border:1px solid #ebeef2; border-radius:4px; margin-top:14px; }
+  .history .h-item { padding:12px 16px; border-bottom:1px solid #ebeef2; font-size:13px; }
+  .history .h-item:last-child { border-bottom:none; }
+  .history .h-item .h-date { color:#7a8694; font-size:12px; margin-bottom:4px; }
+  .history .h-item .h-status { font-weight:600; color:#2c3e50; }
+  .history .h-item .h-msg { color:#4b5563; margin-top:3px; }
+</style>
 </head>
 <body>
 <div class="layout">
@@ -77,226 +140,240 @@
 
 <div class="content">
 
-<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
-  <div>
-    <div style="font-size:12px; color:#7a8694; margin-bottom:4px;">
-      <a href="sales.html" style="color:#1abc9c;">← Back to Orders</a>
-    </div>
-    <h1 class="page-title" style="margin:0;">Order #<span id="ord-id">449</span> <span style="font-size:13px; color:#7a8694; font-weight:normal;">· <span id="ord-date">Apr 25, 2026 14:22:18</span></span></h1>
-  </div>
-  <div style="display:flex; gap:8px; flex-wrap:wrap;">
-    <button class="btn">📧 Send Email</button>
-    <button class="btn">🖨 Print</button>
-    <button class="btn">🛑 Hold</button>
-    <button class="btn-primary btn">✓ Mark as Shipped</button>
-  </div>
+<div class="ord-head">
+  <h1>#<span id="ord-id">9742517</span> <span class="substatus" id="ord-status-note">(The order confirmation email was sent)</span></h1>
 </div>
 
-<!-- Status banner -->
-<div style="background:#d5f3eb; color:#138a6e; padding:12px 18px; border-radius:6px; margin-bottom:18px; display:flex; align-items:center; gap:10px;">
-  <span style="font-size:18px;">✓</span>
-  <strong>Order Status:</strong>
-  <select id="status-select" style="padding:4px 10px; border:1px solid #84c25c; background:#fff; border-radius:4px; font-size:13px;">
-    <option selected>complete</option>
-    <option>processing</option>
-    <option>pending</option>
-    <option>canceled</option>
-    <option>on_hold</option>
-  </select>
-  <span style="margin-left:auto; font-size:13px;">Last updated: <strong>Apr 25, 2026 14:30</strong></span>
+<!-- Top action bar -->
+<div class="ord-actions">
+  <a class="back-link" href="sales.html">← Back</a>
+  <button onclick="alert('Email sent to courier portal')">Send Email</button>
+  <button onclick="alert('Print invoice triggered')">Print</button>
+  <button onclick="alert('Order placed on hold')">Hold</button>
+  <button onclick="document.getElementById('status-select').focus()">Update Status</button>
 </div>
 
-<!-- Two columns: Account Info + Address Info -->
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
-  <div class="panel">
-    <div class="panel-head">Order &amp; Account Information</div>
-    <div class="panel-body">
-      <table class="data" style="border:none;">
-        <tbody>
-          <tr><td style="width:160px; font-weight:600;">Order #</td><td>#449</td></tr>
-          <tr><td style="font-weight:600;">Order Date</td><td>Apr 25, 2026 14:22:18</td></tr>
-          <tr><td style="font-weight:600;">Status</td><td><span class="status-pill complete">complete</span></td></tr>
-          <tr><td style="font-weight:600;">Purchased From</td><td>Electronyat / Main Website</td></tr>
-          <tr><td style="font-weight:600;">Customer Name</td><td>Ahmed Al-Thani</td></tr>
-          <tr><td style="font-weight:600;">Customer Email</td><td>ahmed.althani@example.qa</td></tr>
-          <tr><td style="font-weight:600;">Customer Group</td><td>General</td></tr>
-        </tbody>
-      </table>
+<div class="ord-layout">
+  <div class="ord-content">
+
+    <!-- Order & Account Info -->
+    <div id="sec-info">
+      <h2 class="ord-sec-title">Order &amp; Account Information</h2>
+      <div class="ord-info">
+
+        <div class="info-block">
+          <h3>Order # <span id="ord-num">9742517</span> <span style="font-weight:400; font-size:12px; color:#16a34a;">(Confirmation email sent)</span></h3>
+          <table>
+            <tbody>
+              <tr><td>Order Date</td><td id="ord-date">Apr 23, 2026, 12:51:39 PM</td></tr>
+              <tr><td>Order Status</td><td id="ord-status-cell"><span class="status-pill complete" id="ord-status-pill">Complete</span></td></tr>
+              <tr><td>Payment Status</td><td><span class="status-pill complete">Paid</span></td></tr>
+              <tr><td>Hyperpay payment id</td><td>HP-20260423-9742517</td></tr>
+              <tr><td>Payment Gateway Status</td><td>Settled</td></tr>
+              <tr><td>Purchased From</td><td>Qatar / Bfab QATAR</td></tr>
+              <tr><td>Placed from IP</td><td>117.251.16.178</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Account Information panel intentionally hidden — privacy -->
+        <div class="info-block">
+          <h3>Customer 🔒 <span style="font-weight:400; font-size:11px; color:#7a8694;">(Hidden from seller)</span></h3>
+          <div style="background:#f7f9fb; padding:18px; border:1px dashed #d0d7de; border-radius:4px; text-align:center; font-size:13px; color:#7a8694;">
+            <div style="font-size:22px; margin-bottom:6px;">🔐</div>
+            Customer name and email are managed by the marketplace and are not shared with sellers.<br>
+            Use the Comments History below to communicate with the buyer.
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="panel">
-    <div class="panel-head">Address Information</div>
-    <div class="panel-body">
-      <div style="position:relative;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; font-size:13px; line-height:1.7; filter:blur(6px); user-select:none; pointer-events:none;">
-          <div>
-            <div style="font-weight:600; margin-bottom:6px; color:#2c3e50;">Billing Address</div>
-            Ahmed Al-Thani<br>
-            Building 5, Pearl Qatar<br>
-            West Bay, Doha 12345<br>
+
+    <!-- Address Information (blurred) -->
+    <h2 class="ord-sec-title">Address Information</h2>
+    <div class="ord-info">
+      <div class="info-block">
+        <h3>Billing Address 🔒</h3>
+        <div class="privacy-mask">
+          <div class="blurred" style="font-size:13px; line-height:1.7; color:#4b5563;">
+            booom Test<br>
+            efredfrwefwerfawer<br>
+            eddeAEdcwedf<br>
+            gdndnsnsn<br>
+            shshdhdbd<br>
+            Al Bidda, Al Bidda<br>
             Qatar<br>
-            📞 +974 5544 1122
+            T: 918078013976
           </div>
-          <div>
-            <div style="font-weight:600; margin-bottom:6px; color:#2c3e50;">Shipping Address</div>
-            Ahmed Al-Thani<br>
-            Building 5, Pearl Qatar<br>
-            West Bay, Doha 12345<br>
+          <div class="overlay">
+            <div style="font-size:18px;">🔒</div>
+            <div style="font-weight:600; font-size:13px;">Hidden from seller</div>
+          </div>
+        </div>
+      </div>
+      <div class="info-block">
+        <h3>Shipping Address 🔒</h3>
+        <div class="privacy-mask">
+          <div class="blurred" style="font-size:13px; line-height:1.7; color:#4b5563;">
+            booom Test<br>
+            efredfrwefwerfawer<br>
+            eddeAEdcwedf<br>
+            gdndnsnsn<br>
+            shshdhdbd<br>
+            Al Bidda, Al Bidda<br>
             Qatar<br>
-            📞 +974 5544 1122
+            T: 918078013976
+          </div>
+          <div class="overlay">
+            <div style="font-size:18px;">🔒</div>
+            <div style="font-weight:600; font-size:13px;">Hidden from seller</div>
+            <div style="font-size:11px; color:#7a8694;">Address shared with courier only.</div>
           </div>
         </div>
-        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(255,255,255,.55); border-radius:4px; text-align:center;">
-          <div style="font-size:22px; margin-bottom:6px;">🔒</div>
-          <div style="font-weight:600; color:#2c3e50; margin-bottom:4px;">Customer address is private</div>
-          <div style="font-size:12px; color:#7a8694;">Address details are shared with the courier only.<br>Contact support if you need to verify shipping.</div>
+      </div>
+    </div>
+
+    <!-- Payment & Shipping -->
+    <h2 class="ord-sec-title">Payment &amp; Shipping Method</h2>
+    <div class="ord-info">
+      <div class="info-block">
+        <h3>Payment Information</h3>
+        <div style="font-size:13px; color:#4b5563; line-height:1.7;">
+          Cash On Delivery<br>
+          <span style="color:#7a8694;">The order was placed using QAR.</span>
+        </div>
+      </div>
+      <div class="info-block">
+        <h3>Shipping &amp; Handling Information</h3>
+        <div style="font-size:13px; color:#4b5563; line-height:1.7;">
+          <strong>Store Pickup Shipping</strong> — Store Pickup <span style="color:#1abc9c; font-weight:500;">QAR 0.00</span><br>
+          <span style="color:#7a8694;">Pickup Code: matalan_place_vendome</span>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Payment + Shipping methods -->
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
-  <div class="panel">
-    <div class="panel-head">Payment &amp; Shipping Method</div>
-    <div class="panel-body">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; font-size:13px;">
-        <div>
-          <div style="font-weight:600; color:#2c3e50; margin-bottom:6px;">Payment Method</div>
-          Credit Card (Visa) ending in 4488<br>
-          <span style="color:#7a8694;">Authorized: QAR 5,899.00</span>
-        </div>
-        <div>
-          <div style="font-weight:600; color:#2c3e50; margin-bottom:6px;">Shipping Method</div>
-          Express Delivery — Same Day<br>
-          <span style="color:#7a8694;">Carrier: Aramex</span><br>
-          <span style="color:#7a8694;">Tracking: <a href="#" style="color:#1abc9c;">QA-9921-44</a></span>
-        </div>
-      </div>
+    <!-- Items Ordered -->
+    <h2 class="ord-sec-title">Items Ordered</h2>
+    <div style="overflow-x:auto;">
+    <table class="items-tbl">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Item Status</th>
+          <th>Original Price</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+          <th>Tax Amount</th>
+          <th>Tax Percent</th>
+          <th>Discount</th>
+          <th>Row Total</th>
+          <th>Store Pickup Code</th>
+          <th>Delivery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Casa Basket-Black-One Size</strong><br><span style="color:#7a8694; font-size:11px;">SKU: M81498200000</span></td>
+          <td><span class="status-pill shipped">Shipped</span><br><span style="color:#7a8694; font-size:11px;">Ordered 1 · Invoiced 1 · Shipped 1</span></td>
+          <td>QAR 45.00</td>
+          <td>QAR 45.00</td>
+          <td>1</td>
+          <td>QAR 45.00</td>
+          <td>QAR 0.00</td>
+          <td>0%</td>
+          <td>QAR 0.00</td>
+          <td>QAR 45.00</td>
+          <td>matalan_place_vendome</td>
+          <td>click_collect</td>
+        </tr>
+        <tr>
+          <td><strong>Shell Soap Dispenser-White-One Size</strong><br><span style="color:#7a8694; font-size:11px;">SKU: M81498000000</span></td>
+          <td><span class="status-pill shipped">Shipped</span><br><span style="color:#7a8694; font-size:11px;">Ordered 1 · Invoiced 1 · Shipped 1</span></td>
+          <td>QAR 59.00</td>
+          <td>QAR 59.00</td>
+          <td>1</td>
+          <td>QAR 59.00</td>
+          <td>QAR 0.00</td>
+          <td>0%</td>
+          <td>QAR 0.00</td>
+          <td>QAR 59.00</td>
+          <td>matalan_place_vendome</td>
+          <td>click_collect</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
-  </div>
-  <div class="panel">
-    <div class="panel-head">Commission Breakdown</div>
-    <div class="panel-body">
-      <table class="data" style="border:none;">
-        <tbody>
-          <tr><td style="width:200px;">Order Total</td><td style="text-align:right;">QAR 5,899.00</td></tr>
-          <tr><td>Platform Commission (12%)</td><td style="text-align:right; color:#e74c3c;">−QAR 707.88</td></tr>
-          <tr style="border-top:2px solid #ebeef2;"><td style="font-weight:600;">Net Earnings</td><td style="text-align:right; font-weight:600; color:#1abc9c; font-size:16px;">QAR 5,191.12</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
-<!-- Items Ordered -->
-<div class="panel">
-  <div class="panel-head">Items Ordered</div>
-  <div style="overflow-x:auto;">
-  <table class="data">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>SKU</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th>Subtotal</th>
-        <th>Tax</th>
-        <th>Discount</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <div style="display:flex; align-items:center; gap:10px;">
-            <div style="width:48px; height:48px; background:#ecf0f5; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:24px;">📺</div>
-            <div>
-              <strong>Samsung 65" QN700B Neo QLED 8K Smart TV</strong><br>
-              <span style="color:#7a8694; font-size:12px;">Open Box · 3-Months Warranty</span>
-            </div>
+    <!-- Order Total: Notes (status update) + Totals -->
+    <h2 class="ord-sec-title">Order Total</h2>
+    <div class="ord-total">
+      <div>
+        <h3 style="font-size:15px; color:#2c3e50; font-weight:600; margin: 0 0 12px;">Notes for this Order</h3>
+        <div class="com-form">
+          <div class="field">
+            <label>Status</label>
+            <select name="status" id="status-select">
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="shipped">Shipped</option>
+              <option value="complete" selected>Complete</option>
+              <option value="canceled">Canceled</option>
+              <option value="on_hold">On Hold</option>
+              <option value="refunded">Refunded</option>
+            </select>
           </div>
-        </td>
-        <td>SM-S928BZK-256</td>
-        <td>QAR 5,500.00</td>
-        <td>1</td>
-        <td>QAR 5,500.00</td>
-        <td>QAR 275.00</td>
-        <td>—</td>
-        <td>QAR 5,775.00</td>
-      </tr>
-      <tr>
-        <td>
-          <div style="display:flex; align-items:center; gap:10px;">
-            <div style="width:48px; height:48px; background:#ecf0f5; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:24px;">🔌</div>
-            <div>
-              <strong>45W Travel Adapter PD Fast Charger</strong><br>
-              <span style="color:#7a8694; font-size:12px;">Original Samsung accessory</span>
-            </div>
+          <div class="field">
+            <label>Comment</label>
+            <textarea rows="4" id="comment-text" placeholder="Add a comment about this status change..."></textarea>
           </div>
-        </td>
-        <td>EP-T4510</td>
-        <td>QAR 240.00</td>
-        <td>1</td>
-        <td>QAR 240.00</td>
-        <td>QAR 12.00</td>
-        <td>—</td>
-        <td>QAR 252.00</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr><td colspan="7" style="text-align:right; font-weight:600;">Subtotal</td><td>QAR 5,740.00</td></tr>
-      <tr><td colspan="7" style="text-align:right; font-weight:600;">Tax</td><td>QAR 287.00</td></tr>
-      <tr><td colspan="7" style="text-align:right; font-weight:600;">Shipping (Express)</td><td>QAR 0.00 <span style="color:#16a34a; font-size:11px;">FREE</span></td></tr>
-      <tr><td colspan="7" style="text-align:right; font-weight:600;">Discount</td><td>−QAR 128.00</td></tr>
-      <tr style="background:#f7f9fb;"><td colspan="7" style="text-align:right; font-weight:600; font-size:15px;">Grand Total</td><td style="font-weight:600; color:#1abc9c; font-size:16px;">QAR 5,899.00</td></tr>
-    </tfoot>
-  </table>
-  </div>
-</div>
+          <div class="checks">
+            <label><input type="checkbox" id="notify-customer"> Notify Customer by Email</label>
+            <label><input type="checkbox" id="visible-store"> Visible on Storefront</label>
+          </div>
+          <button class="submit-btn" onclick="submitStatusUpdate()">Submit Comment</button>
+        </div>
+      </div>
 
-<!-- Comments history -->
-<div class="panel">
-  <div class="panel-head">Comments History</div>
-  <div class="panel-body">
-    <textarea rows="3" style="width:100%; padding:10px; border:1px solid #d0d7de; border-radius:4px; font-size:13px; resize:vertical;" placeholder="Add a comment about this order..."></textarea>
-    <div style="display:flex; gap:14px; align-items:center; margin:10px 0;">
-      <label style="font-size:13px;"><input type="checkbox"> Notify Customer by Email</label>
-      <label style="font-size:13px;"><input type="checkbox"> Visible on Storefront</label>
-      <button class="btn-primary btn" style="margin-left:auto;" onclick="alert('Comment added')">Submit Comment</button>
+      <div>
+        <h3 style="font-size:15px; color:#2c3e50; font-weight:600; margin: 0 0 12px;">Order Totals</h3>
+        <table class="totals-tbl">
+          <tbody>
+            <tr><td>Subtotal</td><td>QAR 104.00</td></tr>
+            <tr><td>Shipping &amp; Handling</td><td>QAR 0.00</td></tr>
+            <tr><td>E-wallet Amount Applied</td><td>QAR 0.00</td></tr>
+            <tr class="grand"><td>Grand Total</td><td>QAR 104.00</td></tr>
+            <tr><td>Total Paid</td><td>QAR 104.00</td></tr>
+            <tr><td>Total Refunded</td><td>QAR 0.00</td></tr>
+            <tr><td>Total Due</td><td>QAR 0.00</td></tr>
+            <tr style="border-top:2px solid #1abc9c;"><td style="color:#7a8694;">Platform Commission (12%)</td><td style="color:#e74c3c;">−QAR 12.48</td></tr>
+            <tr><td style="font-weight:600; color:#2c3e50;">Net Earnings</td><td style="font-weight:600; color:#1abc9c;">QAR 91.52</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <hr style="margin:18px 0; border: none; border-top: 1px solid #ebeef2;">
-
-    <div style="font-size:13px;">
-      <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid #f3f4f6;">
-        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:30:08</div>
-        <div style="flex:1;">
-          <strong>complete</strong> · Customer Notified
-          <div style="color:#4b5563; margin-top:4px;">Order delivered. Tracking number QA-9921-44 confirmed received.</div>
-        </div>
+    <!-- Comments / History (auto-grows when status updated) -->
+    <h2 class="ord-sec-title" id="sec-comments">Comments History</h2>
+    <div class="history" id="history-list">
+      <div class="h-item">
+        <div class="h-date">Apr 23, 2026 13:08:22</div>
+        <div class="h-status">Complete · Customer Notified</div>
+        <div class="h-msg">Order delivered. Tracking number QA-9921-44 confirmed received.</div>
       </div>
-      <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid #f3f4f6;">
-        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:25:33</div>
-        <div style="flex:1;">
-          <strong>shipped</strong> · Customer Notified
-          <div style="color:#4b5563; margin-top:4px;">Package picked up by Aramex courier. Estimated delivery within 2 hours.</div>
-        </div>
+      <div class="h-item">
+        <div class="h-date">Apr 23, 2026 13:00:33</div>
+        <div class="h-status">Shipped · Customer Notified</div>
+        <div class="h-msg">Package handed over to courier. Estimated delivery within 2 hours.</div>
       </div>
-      <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid #f3f4f6;">
-        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:23:50</div>
-        <div style="flex:1;">
-          <strong>processing</strong>
-          <div style="color:#4b5563; margin-top:4px;">Payment captured. Invoice INV-1042 generated.</div>
-        </div>
+      <div class="h-item">
+        <div class="h-date">Apr 23, 2026 12:55:50</div>
+        <div class="h-status">Processing</div>
+        <div class="h-msg">Payment captured. Invoice INV-1042 generated.</div>
       </div>
-      <div style="display:flex; gap:14px; padding:10px 0;">
-        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:22:18</div>
-        <div style="flex:1;">
-          <strong>pending</strong>
-          <div style="color:#4b5563; margin-top:4px;">Order placed by customer.</div>
-        </div>
+      <div class="h-item">
+        <div class="h-date">Apr 23, 2026 12:51:39</div>
+        <div class="h-status">Pending</div>
+        <div class="h-msg">Order placed by customer.</div>
       </div>
     </div>
   </div>
@@ -310,15 +387,80 @@
 
 <script src="assets/seller.js?v=1777095503"></script>
 <script>
-  // Pre-fill order id/date from query string if present
+  // Pre-fill order id from query string
   const params = new URLSearchParams(location.search);
   const oid = params.get('id');
   if (oid) {
     document.getElementById('ord-id').textContent = oid;
+    document.getElementById('ord-num').textContent = oid;
     document.title = 'Order #' + oid + ' — Detail';
   }
   const odate = params.get('date');
   if (odate) document.getElementById('ord-date').textContent = odate;
+
+  // Order status update — adds a comment to the history and updates the status pill
+  function submitStatusUpdate() {
+    const sel = document.getElementById('status-select');
+    const newStatus = sel.value;
+    const newStatusLabel = sel.options[sel.selectedIndex].text;
+    const comment = document.getElementById('comment-text').value.trim();
+    const notify = document.getElementById('notify-customer').checked;
+    const visible = document.getElementById('visible-store').checked;
+
+    // Update the status pill in info section
+    const pill = document.getElementById('ord-status-pill');
+    pill.className = 'status-pill ' + newStatus;
+    pill.textContent = newStatusLabel;
+
+    // Update header substatus note
+    const note = document.getElementById('ord-status-note');
+    note.textContent = '(Status updated to: ' + newStatusLabel + ')';
+
+    // Insert a new comment row at the top of history (using safe DOM creation)
+    const ts = new Date();
+    const tsStr = ts.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) + ' ' + ts.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    const item = document.createElement('div');
+    item.className = 'h-item';
+    const dateDiv = document.createElement('div');
+    dateDiv.className = 'h-date';
+    dateDiv.textContent = tsStr;
+    const statusDiv = document.createElement('div');
+    statusDiv.className = 'h-status';
+    statusDiv.textContent = newStatusLabel + (notify ? ' · Customer Notified' : '') + (visible ? ' · Visible on Storefront' : '');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'h-msg';
+    msgDiv.textContent = comment || '(No additional comment)';
+    item.appendChild(dateDiv);
+    item.appendChild(statusDiv);
+    item.appendChild(msgDiv);
+
+    const list = document.getElementById('history-list');
+    list.insertBefore(item, list.firstChild);
+
+    // Reset form
+    document.getElementById('comment-text').value = '';
+    document.getElementById('notify-customer').checked = false;
+    document.getElementById('visible-store').checked = false;
+
+    alert('Status updated to "' + newStatusLabel + '"' + (notify ? ' and customer notified.' : '.'));
+
+    item.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  // Side-nav scroll-to-section
+  document.querySelectorAll('.ord-nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      const t = document.querySelector(href);
+      if (t) {
+        t.scrollIntoView({behavior:'smooth', block:'start'});
+        document.querySelectorAll('.ord-nav a').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      }
+    });
+  });
 </script>
 </body>
 </html>
