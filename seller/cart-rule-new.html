@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add New Rule</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Samsung Retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <a class="nav-item" href="advanced-report.html"><span class="ic">📊</span><span>Advanced Report</span></a>
+    <a class="nav-item active" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+<form id="rule-form" onsubmit="saveRule(event)">
+
+<h1 class="page-title">Add New Rule</h1>
+
+<div class="fieldset">
+  <div class="legend">Coupon Rule Information</div>
+  <div class="body">
+    <div class="field"><label>Rule Name <span class="req">*</span></label><input type="text" name="rule_name" required></div>
+    <div class="field"><label>Coupon Code</label><input type="text" name="coupon_code" placeholder="e.g. SUMMER20"></div>
+    <div class="field" style="grid-template-columns:220px 1fr; align-items:start;"><label>Rule Description</label><textarea name="description" rows="4" style="max-width:100%;"></textarea></div>
+    <div class="field"><label>Start Date</label><input type="date" name="start_date"></div>
+    <div class="field"><label>End Date</label><input type="date" name="end_date"></div>
+    <div class="field"><label>Active</label><input type="checkbox" name="active" style="width:auto;"></div>
+    <div class="field" style="align-items:start;"><label>Websites</label><select name="websites[]" multiple style="height:96px; max-width:380px;">
+      <option>Qatar</option>
+      <option>Bahrain</option>
+      <option>UAE</option>
+      <option>Saudi</option>
+    </select></div>
+    <div class="field" style="align-items:start;"><label>Customer Groups</label><select name="customer_groups[]" multiple style="height:96px; max-width:380px;">
+      <option>NOT LOGGED IN</option>
+      <option>General</option>
+      <option>Wholesale</option>
+      <option>Retailer</option>
+    </select></div>
+    <div class="field"><label>Uses Per Customer</label><input type="number" name="uses_per_customer" min="0" placeholder="0 = unlimited"></div>
+    <div class="field"><label>Uses Per Coupon</label><input type="number" name="uses_per_coupon" min="0" placeholder="0 = unlimited"></div>
+    <div class="field"><label>Discount Amount</label><input type="number" name="discount_amount" step="0.01" placeholder="e.g. 20"></div>
+    <div class="field"><label>Apply Actions</label><select name="apply_actions">
+      <option value="by_percent">By Percent</option>
+      <option value="by_fixed">By Fixed Amount</option>
+      <option value="cart_fixed">Fixed Amount Discount for Whole Cart</option>
+    </select></div>
+  </div>
+</div>
+
+<div class="fieldset">
+  <div class="legend">Apply Rule Conditions</div>
+  <div class="body">
+    <div class="field"><label>Condition Type</label><select name="condition_type">
+      <option value="">Choose a Condition</option>
+      <option value="subtotal">Subtotal</option>
+      <option value="qty">Total Items Quantity</option>
+      <option value="weight">Total Weight</option>
+      <option value="payment_method">Payment Method</option>
+      <option value="shipping_method">Shipping Method</option>
+      <option value="country">Shipping Country</option>
+      <option value="postcode">Shipping Postcode</option>
+    </select></div>
+    <div id="condition-detail" style="display:none; margin-top:8px; padding:12px; background:#f7f9fb; border:1px dashed #d0d7de; border-radius:4px; font-size:13px; color:#7a8694;">
+      Configure the chosen condition. (e.g. for Subtotal: greater than X)
+    </div>
+  </div>
+</div>
+
+<div style="display:flex; gap:8px; justify-content:flex-end; margin-bottom:30px;">
+  <button type="button" class="btn" onclick="location.href='cart-price-rules.html'">← Cancel</button>
+  <button type="reset" class="btn">Reset</button>
+  <button type="submit" class="btn-primary btn">Save Rule</button>
+</div>
+
+</form>
+</div>
+
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+
+<script src="assets/seller.js?v=1777095503"></script>
+<script>
+  // Show condition detail when a type is chosen
+  document.querySelector('select[name="condition_type"]').addEventListener('change', function(){
+    document.getElementById('condition-detail').style.display = this.value ? 'block' : 'none';
+  });
+
+  // Save handler — collect form, store in sessionStorage so the listing can show it, redirect
+  function saveRule(e){
+    e.preventDefault();
+    const form = document.getElementById('rule-form');
+    const fd = new FormData(form);
+    const rule = {
+      id: 'CR-' + Math.floor(100 + Math.random() * 900),
+      seller_id: 1,
+      coupon_name: fd.get('rule_name') || '(unnamed)',
+      coupon_code: fd.get('coupon_code') || '',
+      start_date: fd.get('start_date') || '',
+      end_date: fd.get('end_date') || '',
+      status: form.elements['active'].checked ? 'Active' : 'Inactive',
+      rule_type: fd.get('apply_actions') || 'by_percent',
+      discount_amount: fd.get('discount_amount') || '0.0000',
+      description: fd.get('description') || ''
+    };
+    // Persist to sessionStorage (read by listing page)
+    let rules = [];
+    try { rules = JSON.parse(sessionStorage.getItem('cart_rules') || '[]'); } catch(e){}
+    rules.unshift(rule);
+    sessionStorage.setItem('cart_rules', JSON.stringify(rules));
+    alert('Rule "' + rule.coupon_name + '" saved successfully!');
+    location.href = 'cart-price-rules.html';
+  }
+</script>
+</body>
+</html>
