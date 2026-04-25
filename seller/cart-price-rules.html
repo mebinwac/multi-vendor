@@ -46,7 +46,6 @@
 </aside>
 
 <main class="main">
-
 <div class="topbar">
   <div class="left-controls">
     <button class="menu-toggle" title="Toggle menu">☰</button>
@@ -63,147 +62,157 @@
 
 <div class="content">
 
-<h1 class="page-title">Cart Price Rules</h1>
-<div style="display:flex; justify-content:space-between; margin-bottom:14px;">
-  <span class="records">8 records found</span>
-  <button class="btn-primary btn" onclick="alert('New cart rule form')">+ Add New Rule</button>
-</div>
-
-<div class="stat-grid">
-  <div class="stat-card green"><div><div class="stat-num">5</div><div class="stat-lbl">Active Rules</div></div><div class="stat-icon">✓</div></div>
-  <div class="stat-card blue"><div><div class="stat-num">QAR 12,480</div><div class="stat-lbl">Discount Given</div></div><div class="stat-icon">💸</div></div>
-  <div class="stat-card orange"><div><div class="stat-num">142</div><div class="stat-lbl">Times Used</div></div><div class="stat-icon">🎟</div></div>
-  <div class="stat-card purple"><div><div class="stat-num">3</div><div class="stat-lbl">Expiring Soon</div></div><div class="stat-icon">⏰</div></div>
+<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+  <h1 class="page-title" style="margin:0;">Coupons List</h1>
+  <button class="btn-primary btn" onclick="location.href='cart-rule-new.html'">+ Add New Rule</button>
 </div>
 
 <div class="panel">
-  <div class="panel-head">All Rules
-    <div class="head-actions">
-      <select class="btn"><option>All status</option><option>Active</option><option>Inactive</option><option>Expired</option></select>
-      <select class="btn"><option>Actions</option><option>Enable</option><option>Disable</option><option>Delete</option></select>
-    </div>
-  </div>
-  <table class="data">
-    <thead><tr><th class="check-col"><input type="checkbox"></th><th>ID</th><th>Rule Name</th><th>Description</th><th>Coupon Code</th><th>Discount</th><th>Uses</th><th>Status</th><th>From</th><th>To</th><th>Action</th></tr></thead>
-    <tbody>
+  <table class="data" id="rules-table">
+    <thead>
       <tr>
-        <td><input type="checkbox"></td>
+        <th>ID</th>
+        <th>Seller ID</th>
+        <th>Coupon Name</th>
+        <th>Coupon Code</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Rule Type</th>
+        <th>Discount Amount</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="rules-tbody">
+      <tr data-id="385186">
+        <td>385186</td>
         <td>1</td>
-        <td><a href="#">Eid Al-Fitr Special</a></td>
-        <td>10% off all Apple devices</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">EID2026</code></td>
-        <td>10%</td>
-        <td>42</td>
-        <td><span class="status-pill complete">Active</span></td>
+        <td>seller</td>
+        <td>12345</td>
+        <td>—</td>
+        <td>—</td>
+        <td><span class="status-pill pending">Inactive</span></td>
+        <td>by_percent</td>
+        <td>20.0000</td>
+        <td>
+          <button class="btn-blue btn" style="padding:4px 10px; font-size:12px;" data-action="edit" data-id="385186">Edit</button>
+          <button class="btn" style="padding:4px 10px; font-size:12px; background:#e74c3c; color:#fff; border-color:#e74c3c;" data-action="delete" data-id="385186">Delete</button>
+        </td>
+      </tr>
+      <tr data-id="385187">
+        <td>385187</td>
+        <td>1</td>
+        <td>Eid Al-Fitr Special</td>
+        <td>EID2026</td>
         <td>2026-04-01</td>
         <td>2026-05-15</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>2</td>
-        <td><a href="#">Free Shipping over QAR 1000</a></td>
-        <td>Free standard shipping for orders above QAR 1,000</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">SHIPFREE</code></td>
-        <td>Free Shipping</td>
-        <td>38</td>
         <td><span class="status-pill complete">Active</span></td>
-        <td>2026-01-01</td>
-        <td>2026-12-31</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+        <td>by_percent</td>
+        <td>10.0000</td>
+        <td>
+          <button class="btn-blue btn" style="padding:4px 10px; font-size:12px;" data-action="edit" data-id="385187">Edit</button>
+          <button class="btn" style="padding:4px 10px; font-size:12px; background:#e74c3c; color:#fff; border-color:#e74c3c;" data-action="delete" data-id="385187">Delete</button>
+        </td>
       </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>3</td>
-        <td><a href="#">First Order 5% Off</a></td>
-        <td>5% discount on first purchase</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">WELCOME5</code></td>
-        <td>5%</td>
-        <td>27</td>
-        <td><span class="status-pill complete">Active</span></td>
-        <td>2026-01-01</td>
-        <td>—</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>4</td>
-        <td><a href="#">iPhone Bundle Discount</a></td>
-        <td>Buy iPhone + AirPods, save QAR 200</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">IPHONEBUNDLE</code></td>
-        <td>QAR 200 off</td>
-        <td>15</td>
-        <td><span class="status-pill complete">Active</span></td>
-        <td>2026-04-15</td>
-        <td>2026-04-30</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>5</td>
-        <td><a href="#">Weekend Flash Sale</a></td>
-        <td>15% off accessories every weekend</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">WEEKEND15</code></td>
-        <td>15%</td>
-        <td>12</td>
-        <td><span class="status-pill complete">Active</span></td>
-        <td>2026-04-20</td>
-        <td>2026-04-28</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>6</td>
-        <td><a href="#">VIP Customer Discount</a></td>
-        <td>8% off for Gold-tier loyalty members</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">VIPGOLD</code></td>
-        <td>8%</td>
-        <td>8</td>
-        <td><span class="status-pill complete">Active</span></td>
-        <td>2026-01-01</td>
-        <td>2026-12-31</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>7</td>
-        <td><a href="#">National Day Sale</a></td>
-        <td>20% off everything for Qatar National Day</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">QATAR20</code></td>
-        <td>20%</td>
-        <td>0</td>
-        <td><span class="status-pill pending">Scheduled</span></td>
+      <tr data-id="385188">
+        <td>385188</td>
+        <td>1</td>
+        <td>National Day Sale</td>
+        <td>QATAR20</td>
         <td>2026-12-18</td>
         <td>2026-12-22</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"></td>
-        <td>8</td>
-        <td><a href="#">Ramadan Special 2026</a></td>
-        <td>12% off MacBook & iPad during Ramadan</td>
-        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">RAMADAN12</code></td>
-        <td>12%</td>
-        <td>0</td>
-        <td><span class="status-pill canceled">Expired</span></td>
-        <td>2026-02-28</td>
-        <td>2026-03-29</td>
-        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+        <td><span class="status-pill pending">Inactive</span></td>
+        <td>by_percent</td>
+        <td>20.0000</td>
+        <td>
+          <button class="btn-blue btn" style="padding:4px 10px; font-size:12px;" data-action="edit" data-id="385188">Edit</button>
+          <button class="btn" style="padding:4px 10px; font-size:12px; background:#e74c3c; color:#fff; border-color:#e74c3c;" data-action="delete" data-id="385188">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
-  <div class="pager">
-    <span>‹</span>
-    <button class="pbtn active">1</button>
-    <span>›</span>
-    <span style="margin-left:auto; color:#7a8694;">Showing 1–8 of 8 rules</span>
-  </div>
 </div>
 
 </div>
+
 <div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
 </main>
 </div>
+
 <script src="assets/seller.js?v=1777095503"></script>
+<script>
+  // Build a row using safe DOM methods (no innerHTML).
+  function makeCell(text) {
+    const td = document.createElement('td');
+    td.textContent = text == null || text === '' ? '—' : String(text);
+    return td;
+  }
+  function makeStatusCell(status) {
+    const td = document.createElement('td');
+    const span = document.createElement('span');
+    span.className = 'status-pill ' + (status === 'Active' ? 'complete' : 'pending');
+    span.textContent = status;
+    td.appendChild(span);
+    return td;
+  }
+  function makeActionCell(id) {
+    const td = document.createElement('td');
+    const editBtn = document.createElement('button');
+    editBtn.className = 'btn-blue btn';
+    editBtn.style.cssText = 'padding:4px 10px; font-size:12px;';
+    editBtn.dataset.action = 'edit';
+    editBtn.dataset.id = id;
+    editBtn.textContent = 'Edit';
+    const delBtn = document.createElement('button');
+    delBtn.className = 'btn';
+    delBtn.style.cssText = 'padding:4px 10px; font-size:12px; background:#e74c3c; color:#fff; border-color:#e74c3c;';
+    delBtn.dataset.action = 'delete';
+    delBtn.dataset.id = id;
+    delBtn.textContent = 'Delete';
+    td.appendChild(editBtn);
+    td.appendChild(document.createTextNode(' '));
+    td.appendChild(delBtn);
+    return td;
+  }
+  function renderSavedRules() {
+    let rules = [];
+    try { rules = JSON.parse(sessionStorage.getItem('cart_rules') || '[]'); } catch(e){}
+    const tbody = document.getElementById('rules-tbody');
+    rules.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.dataset.id = r.id;
+      tr.appendChild(makeCell(r.id));
+      tr.appendChild(makeCell(r.seller_id || 1));
+      tr.appendChild(makeCell(r.coupon_name));
+      tr.appendChild(makeCell(r.coupon_code));
+      tr.appendChild(makeCell(r.start_date));
+      tr.appendChild(makeCell(r.end_date));
+      tr.appendChild(makeStatusCell(r.status));
+      tr.appendChild(makeCell(r.rule_type));
+      tr.appendChild(makeCell(parseFloat(r.discount_amount || 0).toFixed(4)));
+      tr.appendChild(makeActionCell(r.id));
+      tbody.insertBefore(tr, tbody.firstChild);
+    });
+  }
+  // Delegate Edit / Delete clicks to keep markup clean
+  document.getElementById('rules-tbody').addEventListener('click', function(e){
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    if (btn.dataset.action === 'edit') {
+      sessionStorage.setItem('edit_rule_id', id);
+      location.href = 'cart-rule-new.html';
+    } else if (btn.dataset.action === 'delete') {
+      if (!confirm('Delete rule ' + id + '?')) return;
+      btn.closest('tr').remove();
+      try {
+        let rules = JSON.parse(sessionStorage.getItem('cart_rules') || '[]');
+        rules = rules.filter(r => r.id !== id);
+        sessionStorage.setItem('cart_rules', JSON.stringify(rules));
+      } catch(e){}
+    }
+  });
+  renderSavedRules();
+</script>
 </body>
 </html>
