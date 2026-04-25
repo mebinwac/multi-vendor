@@ -65,22 +65,145 @@
 
 <h1 class="page-title">Cart Price Rules</h1>
 <div style="display:flex; justify-content:space-between; margin-bottom:14px;">
-  <span class="records">0 records found</span>
+  <span class="records">8 records found</span>
   <button class="btn-primary btn" onclick="alert('New cart rule form')">+ Add New Rule</button>
 </div>
+
+<div class="stat-grid">
+  <div class="stat-card green"><div><div class="stat-num">5</div><div class="stat-lbl">Active Rules</div></div><div class="stat-icon">✓</div></div>
+  <div class="stat-card blue"><div><div class="stat-num">QAR 12,480</div><div class="stat-lbl">Discount Given</div></div><div class="stat-icon">💸</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">142</div><div class="stat-lbl">Times Used</div></div><div class="stat-icon">🎟</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">3</div><div class="stat-lbl">Expiring Soon</div></div><div class="stat-icon">⏰</div></div>
+</div>
+
 <div class="panel">
+  <div class="panel-head">All Rules
+    <div class="head-actions">
+      <select class="btn"><option>All status</option><option>Active</option><option>Inactive</option><option>Expired</option></select>
+      <select class="btn"><option>Actions</option><option>Enable</option><option>Disable</option><option>Delete</option></select>
+    </div>
+  </div>
   <table class="data">
-    <thead><tr><th class="check-col"><input type="checkbox"></th><th>Rule</th><th>Description</th><th>Coupon Code</th><th>Status</th><th>From</th><th>To</th><th>Action</th></tr></thead>
+    <thead><tr><th class="check-col"><input type="checkbox"></th><th>ID</th><th>Rule Name</th><th>Description</th><th>Coupon Code</th><th>Discount</th><th>Uses</th><th>Status</th><th>From</th><th>To</th><th>Action</th></tr></thead>
     <tbody>
-      <tr><td colspan="8" style="text-align:center; color:#95a5a6; padding:24px 0;">No cart price rules yet. Click <strong>Add New Rule</strong> to create one.</td></tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>1</td>
+        <td><a href="#">Eid Al-Fitr Special</a></td>
+        <td>10% off all Apple devices</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">EID2026</code></td>
+        <td>10%</td>
+        <td>42</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-04-01</td>
+        <td>2026-05-15</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>2</td>
+        <td><a href="#">Free Shipping over QAR 1000</a></td>
+        <td>Free standard shipping for orders above QAR 1,000</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">SHIPFREE</code></td>
+        <td>Free Shipping</td>
+        <td>38</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-01-01</td>
+        <td>2026-12-31</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>3</td>
+        <td><a href="#">First Order 5% Off</a></td>
+        <td>5% discount on first purchase</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">WELCOME5</code></td>
+        <td>5%</td>
+        <td>27</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-01-01</td>
+        <td>—</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>4</td>
+        <td><a href="#">iPhone Bundle Discount</a></td>
+        <td>Buy iPhone + AirPods, save QAR 200</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">IPHONEBUNDLE</code></td>
+        <td>QAR 200 off</td>
+        <td>15</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-04-15</td>
+        <td>2026-04-30</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>5</td>
+        <td><a href="#">Weekend Flash Sale</a></td>
+        <td>15% off accessories every weekend</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">WEEKEND15</code></td>
+        <td>15%</td>
+        <td>12</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-04-20</td>
+        <td>2026-04-28</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>6</td>
+        <td><a href="#">VIP Customer Discount</a></td>
+        <td>8% off for Gold-tier loyalty members</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">VIPGOLD</code></td>
+        <td>8%</td>
+        <td>8</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-01-01</td>
+        <td>2026-12-31</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>7</td>
+        <td><a href="#">National Day Sale</a></td>
+        <td>20% off everything for Qatar National Day</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">QATAR20</code></td>
+        <td>20%</td>
+        <td>0</td>
+        <td><span class="status-pill pending">Scheduled</span></td>
+        <td>2026-12-18</td>
+        <td>2026-12-22</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>8</td>
+        <td><a href="#">Ramadan Special 2026</a></td>
+        <td>12% off MacBook & iPad during Ramadan</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">RAMADAN12</code></td>
+        <td>12%</td>
+        <td>0</td>
+        <td><span class="status-pill canceled">Expired</span></td>
+        <td>2026-02-28</td>
+        <td>2026-03-29</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
     </tbody>
   </table>
+  <div class="pager">
+    <span>‹</span>
+    <button class="pbtn active">1</button>
+    <span>›</span>
+    <span style="margin-left:auto; color:#7a8694;">Showing 1–8 of 8 rules</span>
+  </div>
 </div>
 
 </div>
 <div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
 </main>
 </div>
-<script src="assets/seller.js"></script>
+<script src="assets/seller.js?v=1777095503"></script>
 </body>
 </html>
