@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seller Transaction — Advanced Report</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Samsung Retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="sales.html">Order</a>
+        <a class="" href="sales-invoice.html" style="display:none;">Invoice</a>
+        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <div class="nav-group open">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📊</span><span>Advanced Report</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="advanced-report.html">Sales Overview</a>
+        <a class="" href="report-order.html">Order Report</a>
+        <a class="active" href="report-account.html">Seller Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+  <h1 class="page-title" style="margin:0;">Seller Transaction</h1>
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <button class="btn-primary btn" onclick="alert('Downloading transactions.csv...')">📥 Download CSV</button>
+  </div>
+</div>
+
+<!-- Filter panel -->
+<div class="panel">
+  <div class="panel-head">Filter Transactions</div>
+  <div class="panel-body">
+    <div class="field"><label>Period</label><select id="period" onchange="updatePeriod()">
+      <option value="day">Day</option>
+      <option value="month" selected>Month</option>
+      <option value="year">Year</option>
+      <option value="custom">Custom Range</option>
+    </select></div>
+
+    <!-- Day picker -->
+    <div class="field period-field" data-period="day" style="display:none;"><label>Date</label><input type="date" value="2026-04-25"></div>
+
+    <!-- Month picker -->
+    <div class="field period-field" data-period="month"><label>Month</label><input type="month" value="2026-04"></div>
+
+    <!-- Year picker -->
+    <div class="field period-field" data-period="year" style="display:none;"><label>Year</label><select>
+      <option>2026</option><option>2025</option><option>2024</option>
+    </select></div>
+
+    <!-- Custom range -->
+    <div class="field period-field" data-period="custom" style="display:none;"><label>From Date</label><input type="date" value="2026-01-01"></div>
+    <div class="field period-field" data-period="custom" style="display:none;"><label>To Date</label><input type="date" value="2026-04-25"></div>
+
+    <div class="field"><label>Transaction Type</label><select>
+      <option>All transactions</option>
+      <option>Sale</option>
+      <option>Refund</option>
+      <option>Payout</option>
+      <option>Fee</option>
+      <option>Adjustment</option>
+    </select></div>
+    <div class="field"><label>Currency</label><select><option selected>QAR</option><option>USD</option><option>AED</option></select></div>
+
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:14px;">
+      <button class="btn" onclick="alert('Filter reset')">Reset</button>
+      <button class="btn-primary btn" onclick="alert('Applying filter...')">🔍 Apply Filter</button>
+    </div>
+  </div>
+</div>
+
+<!-- Summary cards reflecting selected period -->
+<div class="stat-grid">
+  <div class="stat-card green"><div><div class="stat-num">QAR 84,210</div><div class="stat-lbl">Period Credits</div></div><div class="stat-icon">⬆</div></div>
+  <div class="stat-card blue"><div><div class="stat-num">QAR 36,264</div><div class="stat-lbl">Period Debits</div></div><div class="stat-icon">⬇</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">94</div><div class="stat-lbl">Transactions</div></div><div class="stat-icon">📋</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">QAR 47,946</div><div class="stat-lbl">Net Movement</div></div><div class="stat-icon">↔</div></div>
+</div>
+
+<!-- Transaction Report -->
+<div class="panel">
+  <div class="panel-head"><span id="report-period">Transaction Report — April 2026</span>
+    <div class="head-actions" style="display:flex; gap:8px;">
+      <select class="btn"><option>All transactions</option><option>Credits only</option><option>Debits only</option></select>
+    </div>
+  </div>
+  <div style="overflow-x:auto;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Reference</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Debit (QAR)</th>
+        <th>Credit (QAR)</th>
+        <th>Balance (QAR)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Apr 25, 2026</td><td>ORD-449</td><td>Order #449 commission earned</td><td>Sale</td><td>—</td><td>5,191.12</td><td>12,840.00</td></tr>
+      <tr><td>Apr 25, 2026</td><td>ORD-448</td><td>Order #448 commission earned</td><td>Sale</td><td>—</td><td>3,959.12</td><td>7,648.88</td></tr>
+      <tr><td>Apr 24, 2026</td><td>ORD-447</td><td>Order #447 commission earned</td><td>Sale</td><td>—</td><td>7,664.80</td><td>3,689.76</td></tr>
+      <tr><td>Apr 23, 2026</td><td>WR-002</td><td>Withdrawal to QNB account</td><td>Payout</td><td>15,000.00</td><td>—</td><td>−3,975.04</td></tr>
+      <tr><td>Apr 22, 2026</td><td>ORD-441</td><td>Order #441 commission earned</td><td>Sale</td><td>—</td><td>2,904.00</td><td>11,024.96</td></tr>
+      <tr><td>Apr 21, 2026</td><td>RFD-RF-201</td><td>Refund to customer (Order #443)</td><td>Refund</td><td>764.15</td><td>—</td><td>8,120.96</td></tr>
+      <tr><td>Apr 20, 2026</td><td>FEE-Q1</td><td>Quarterly platform fee</td><td>Fee</td><td>500.00</td><td>—</td><td>8,885.11</td></tr>
+      <tr><td>Apr 18, 2026</td><td>ORD-432</td><td>Order #432 commission earned</td><td>Sale</td><td>—</td><td>4,400.00</td><td>9,385.11</td></tr>
+      <tr><td>Apr 15, 2026</td><td>WR-001</td><td>Withdrawal to QNB account</td><td>Payout</td><td>20,000.00</td><td>—</td><td>4,985.11</td></tr>
+      <tr><td>Apr 14, 2026</td><td>ORD-425</td><td>Order #425 commission earned</td><td>Sale</td><td>—</td><td>6,820.00</td><td>24,985.11</td></tr>
+    </tbody>
+    <tfoot>
+      <tr style="font-weight:600; background:#f7f9fb;">
+        <td colspan="4">Period Totals</td>
+        <td>QAR 36,264.15</td>
+        <td>QAR 248,560.00</td>
+        <td>QAR 12,840.00</td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+</div>
+
+
+</div>
+
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+
+<script src="assets/seller.js?v=1777095503"></script>
+<script>
+  function updatePeriod(){
+    const val = document.getElementById('period').value;
+    document.querySelectorAll('.period-field').forEach(el => {
+      el.style.display = el.dataset.period === val ? 'grid' : 'none';
+    });
+    const labels = { day: 'Daily', month: 'Monthly', year: 'Annual', custom: 'Custom' };
+    document.getElementById('report-period').textContent = 'Transaction Report — ' + labels[val] + ' View';
+  }
+</script>
+</body>
+</html>

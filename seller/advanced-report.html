@@ -28,6 +28,14 @@
         <a class="" href="product-new-config.html">Add Configurable Product</a>
       </div>
     </div>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="sales.html">Order</a>
+        <a class="" href="sales-invoice.html" style="display:none;">Invoice</a>
+        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+      </div>
+    </div>
     <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
     <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
     <div class="nav-group">
@@ -40,7 +48,14 @@
         <a class="" href="export-sources.html">Export Sources</a>
       </div>
     </div>
-    <a class="nav-item active" href="advanced-report.html"><span class="ic">📊</span><span>Advanced Report</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📊</span><span>Advanced Report</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="advanced-report.html">Sales Overview</a>
+        <a class="" href="report-order.html">Order Report</a>
+        <a class="" href="report-account.html">Seller Transaction</a>
+      </div>
+    </div>
     <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
   </nav>
 </aside>

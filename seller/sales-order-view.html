@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order #449 — Detail</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Samsung Retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <div class="nav-group open">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="active" href="sales.html">Order</a>
+        <a class="" href="sales-invoice.html" style="display:none;">Invoice</a>
+        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📊</span><span>Advanced Report</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="advanced-report.html">Sales Overview</a>
+        <a class="" href="report-order.html">Order Report</a>
+        <a class="" href="report-account.html">Seller Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+  <div>
+    <div style="font-size:12px; color:#7a8694; margin-bottom:4px;">
+      <a href="sales.html" style="color:#1abc9c;">← Back to Orders</a>
+    </div>
+    <h1 class="page-title" style="margin:0;">Order #<span id="ord-id">449</span> <span style="font-size:13px; color:#7a8694; font-weight:normal;">· <span id="ord-date">Apr 25, 2026 14:22:18</span></span></h1>
+  </div>
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <button class="btn">📧 Send Email</button>
+    <button class="btn">🖨 Print</button>
+    <button class="btn">🛑 Hold</button>
+    <button class="btn-primary btn">✓ Mark as Shipped</button>
+  </div>
+</div>
+
+<!-- Status banner -->
+<div style="background:#d5f3eb; color:#138a6e; padding:12px 18px; border-radius:6px; margin-bottom:18px; display:flex; align-items:center; gap:10px;">
+  <span style="font-size:18px;">✓</span>
+  <strong>Order Status:</strong>
+  <select id="status-select" style="padding:4px 10px; border:1px solid #84c25c; background:#fff; border-radius:4px; font-size:13px;">
+    <option selected>complete</option>
+    <option>processing</option>
+    <option>pending</option>
+    <option>canceled</option>
+    <option>on_hold</option>
+  </select>
+  <span style="margin-left:auto; font-size:13px;">Last updated: <strong>Apr 25, 2026 14:30</strong></span>
+</div>
+
+<!-- Two columns: Account Info + Address Info -->
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+  <div class="panel">
+    <div class="panel-head">Order &amp; Account Information</div>
+    <div class="panel-body">
+      <table class="data" style="border:none;">
+        <tbody>
+          <tr><td style="width:160px; font-weight:600;">Order #</td><td>#449</td></tr>
+          <tr><td style="font-weight:600;">Order Date</td><td>Apr 25, 2026 14:22:18</td></tr>
+          <tr><td style="font-weight:600;">Status</td><td><span class="status-pill complete">complete</span></td></tr>
+          <tr><td style="font-weight:600;">Purchased From</td><td>Electronyat / Main Website</td></tr>
+          <tr><td style="font-weight:600;">Customer Name</td><td>Ahmed Al-Thani</td></tr>
+          <tr><td style="font-weight:600;">Customer Email</td><td>ahmed.althani@example.qa</td></tr>
+          <tr><td style="font-weight:600;">Customer Group</td><td>General</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-head">Address Information</div>
+    <div class="panel-body">
+      <div style="position:relative;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; font-size:13px; line-height:1.7; filter:blur(6px); user-select:none; pointer-events:none;">
+          <div>
+            <div style="font-weight:600; margin-bottom:6px; color:#2c3e50;">Billing Address</div>
+            Ahmed Al-Thani<br>
+            Building 5, Pearl Qatar<br>
+            West Bay, Doha 12345<br>
+            Qatar<br>
+            📞 +974 5544 1122
+          </div>
+          <div>
+            <div style="font-weight:600; margin-bottom:6px; color:#2c3e50;">Shipping Address</div>
+            Ahmed Al-Thani<br>
+            Building 5, Pearl Qatar<br>
+            West Bay, Doha 12345<br>
+            Qatar<br>
+            📞 +974 5544 1122
+          </div>
+        </div>
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(255,255,255,.55); border-radius:4px; text-align:center;">
+          <div style="font-size:22px; margin-bottom:6px;">🔒</div>
+          <div style="font-weight:600; color:#2c3e50; margin-bottom:4px;">Customer address is private</div>
+          <div style="font-size:12px; color:#7a8694;">Address details are shared with the courier only.<br>Contact support if you need to verify shipping.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Payment + Shipping methods -->
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+  <div class="panel">
+    <div class="panel-head">Payment &amp; Shipping Method</div>
+    <div class="panel-body">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; font-size:13px;">
+        <div>
+          <div style="font-weight:600; color:#2c3e50; margin-bottom:6px;">Payment Method</div>
+          Credit Card (Visa) ending in 4488<br>
+          <span style="color:#7a8694;">Authorized: QAR 5,899.00</span>
+        </div>
+        <div>
+          <div style="font-weight:600; color:#2c3e50; margin-bottom:6px;">Shipping Method</div>
+          Express Delivery — Same Day<br>
+          <span style="color:#7a8694;">Carrier: Aramex</span><br>
+          <span style="color:#7a8694;">Tracking: <a href="#" style="color:#1abc9c;">QA-9921-44</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-head">Commission Breakdown</div>
+    <div class="panel-body">
+      <table class="data" style="border:none;">
+        <tbody>
+          <tr><td style="width:200px;">Order Total</td><td style="text-align:right;">QAR 5,899.00</td></tr>
+          <tr><td>Platform Commission (12%)</td><td style="text-align:right; color:#e74c3c;">−QAR 707.88</td></tr>
+          <tr style="border-top:2px solid #ebeef2;"><td style="font-weight:600;">Net Earnings</td><td style="text-align:right; font-weight:600; color:#1abc9c; font-size:16px;">QAR 5,191.12</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Items Ordered -->
+<div class="panel">
+  <div class="panel-head">Items Ordered</div>
+  <div style="overflow-x:auto;">
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>SKU</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Subtotal</th>
+        <th>Tax</th>
+        <th>Discount</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:48px; height:48px; background:#ecf0f5; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:24px;">📺</div>
+            <div>
+              <strong>Samsung 65" QN700B Neo QLED 8K Smart TV</strong><br>
+              <span style="color:#7a8694; font-size:12px;">Open Box · 3-Months Warranty</span>
+            </div>
+          </div>
+        </td>
+        <td>SM-S928BZK-256</td>
+        <td>QAR 5,500.00</td>
+        <td>1</td>
+        <td>QAR 5,500.00</td>
+        <td>QAR 275.00</td>
+        <td>—</td>
+        <td>QAR 5,775.00</td>
+      </tr>
+      <tr>
+        <td>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:48px; height:48px; background:#ecf0f5; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:24px;">🔌</div>
+            <div>
+              <strong>45W Travel Adapter PD Fast Charger</strong><br>
+              <span style="color:#7a8694; font-size:12px;">Original Samsung accessory</span>
+            </div>
+          </div>
+        </td>
+        <td>EP-T4510</td>
+        <td>QAR 240.00</td>
+        <td>1</td>
+        <td>QAR 240.00</td>
+        <td>QAR 12.00</td>
+        <td>—</td>
+        <td>QAR 252.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="7" style="text-align:right; font-weight:600;">Subtotal</td><td>QAR 5,740.00</td></tr>
+      <tr><td colspan="7" style="text-align:right; font-weight:600;">Tax</td><td>QAR 287.00</td></tr>
+      <tr><td colspan="7" style="text-align:right; font-weight:600;">Shipping (Express)</td><td>QAR 0.00 <span style="color:#16a34a; font-size:11px;">FREE</span></td></tr>
+      <tr><td colspan="7" style="text-align:right; font-weight:600;">Discount</td><td>−QAR 128.00</td></tr>
+      <tr style="background:#f7f9fb;"><td colspan="7" style="text-align:right; font-weight:600; font-size:15px;">Grand Total</td><td style="font-weight:600; color:#1abc9c; font-size:16px;">QAR 5,899.00</td></tr>
+    </tfoot>
+  </table>
+  </div>
+</div>
+
+<!-- Comments history -->
+<div class="panel">
+  <div class="panel-head">Comments History</div>
+  <div class="panel-body">
+    <textarea rows="3" style="width:100%; padding:10px; border:1px solid #d0d7de; border-radius:4px; font-size:13px; resize:vertical;" placeholder="Add a comment about this order..."></textarea>
+    <div style="display:flex; gap:14px; align-items:center; margin:10px 0;">
+      <label style="font-size:13px;"><input type="checkbox"> Notify Customer by Email</label>
+      <label style="font-size:13px;"><input type="checkbox"> Visible on Storefront</label>
+      <button class="btn-primary btn" style="margin-left:auto;" onclick="alert('Comment added')">Submit Comment</button>
+    </div>
+
+    <hr style="margin:18px 0; border: none; border-top: 1px solid #ebeef2;">
+
+    <div style="font-size:13px;">
+      <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid #f3f4f6;">
+        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:30:08</div>
+        <div style="flex:1;">
+          <strong>complete</strong> · Customer Notified
+          <div style="color:#4b5563; margin-top:4px;">Order delivered. Tracking number QA-9921-44 confirmed received.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid #f3f4f6;">
+        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:25:33</div>
+        <div style="flex:1;">
+          <strong>shipped</strong> · Customer Notified
+          <div style="color:#4b5563; margin-top:4px;">Package picked up by Aramex courier. Estimated delivery within 2 hours.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid #f3f4f6;">
+        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:23:50</div>
+        <div style="flex:1;">
+          <strong>processing</strong>
+          <div style="color:#4b5563; margin-top:4px;">Payment captured. Invoice INV-1042 generated.</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding:10px 0;">
+        <div style="width:140px; color:#7a8694;">Apr 25, 2026 14:22:18</div>
+        <div style="flex:1;">
+          <strong>pending</strong>
+          <div style="color:#4b5563; margin-top:4px;">Order placed by customer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+
+<script src="assets/seller.js?v=1777095503"></script>
+<script>
+  // Pre-fill order id/date from query string if present
+  const params = new URLSearchParams(location.search);
+  const oid = params.get('id');
+  if (oid) {
+    document.getElementById('ord-id').textContent = oid;
+    document.title = 'Order #' + oid + ' — Detail';
+  }
+  const odate = params.get('date');
+  if (odate) document.getElementById('ord-date').textContent = odate;
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order — Sales</title>
+<link rel="stylesheet" href="assets/seller.css">
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
+  <div class="profile-card">
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
+    <div class="greet">Welcome,</div>
+    <div class="name">Samsung Retailer</div>
+    <div class="status">Online</div>
+  </div>
+  <nav>
+    <a class="nav-item" href="dashboard.html"><span class="ic">🏠</span><span>Dashboard</span></a>
+    <a class="nav-item" href="profile.html"><span class="ic">👤</span><span>Profile</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📦</span><span>Catalog</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="manage-products.html">Manage Products</a>
+        <a class="" href="product-new-simple.html">Add Simple Product</a>
+        <a class="" href="product-new-config.html">Add Configurable Product</a>
+      </div>
+    </div>
+    <div class="nav-group open">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">💰</span><span>Sales</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="active" href="sales.html">Order</a>
+        <a class="" href="sales-invoice.html" style="display:none;">Invoice</a>
+        <a class="" href="sales-annual-transaction.html">Annual Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="import.html">Import</a>
+        <a class="" href="export.html">Export</a>
+        <a class="" href="upload-images.html">Upload Images</a>
+        <a class="" href="import-sources.html">Import Sources</a>
+        <a class="" href="export-sources.html">Export Sources</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">📊</span><span>Advanced Report</span><span class="caret">▾</span></a>
+      <div class="submenu">
+        <a class="" href="advanced-report.html">Sales Overview</a>
+        <a class="" href="report-order.html">Order Report</a>
+        <a class="" href="report-account.html">Seller Transaction</a>
+      </div>
+    </div>
+    <a class="nav-item" href="cart-price-rules.html"><span class="ic">🛒</span><span>Cart Price Rules</span></a>
+  </nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+  <div class="left-controls">
+    <button class="menu-toggle" title="Toggle menu">☰</button>
+    <span class="store-switcher">Electronyat ▾</span>
+  </div>
+  <div class="right-controls">
+    <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
+    <div class="user-pill">
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<h1 class="page-title">Order</h1>
+
+<div class="panel">
+  <div class="panel-head">
+    Table Order
+    <div class="head-actions" style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:13px; color:#7a8694;">Show</span>
+      <select class="btn"><option>20</option><option>50</option><option>100</option></select>
+      <span style="font-size:13px; color:#7a8694;">entries</span>
+      <span style="font-size:13px; color:#7a8694; margin-left:18px;">Search:</span>
+      <input type="text" placeholder="" style="padding:6px 10px; border:1px solid #d0d7de; border-radius:3px; font-size:13px; width:200px;">
+    </div>
+  </div>
+
+  <div style="overflow-x:auto;">
+  <table class="data" id="orders-grid">
+    <thead>
+      <tr>
+        <th>Order ↕</th>
+        <th>Total</th>
+        <th>Commission</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>449</td>
+        <td>5,899.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>5,191.1200</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=449">View</a></td>
+      </tr>
+      <tr>
+        <td>448</td>
+        <td>4,499.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>3,959.1200</td>
+        <td><span class="status-pill processing">processing</span></td>
+        <td><a href="sales-order-view.html?id=448">View</a></td>
+      </tr>
+      <tr>
+        <td>447</td>
+        <td>8,710.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>7,664.8000</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=447">View</a></td>
+      </tr>
+      <tr>
+        <td>446</td>
+        <td>1,299.0000</td>
+        <td>15.0000</td>
+        <td>QAR</td>
+        <td>1,104.1500</td>
+        <td><span class="status-pill pending">pending</span></td>
+        <td><a href="sales-order-view.html?id=446">View</a></td>
+      </tr>
+      <tr>
+        <td>445</td>
+        <td>24,500.0000</td>
+        <td>10.0000</td>
+        <td>QAR</td>
+        <td>22,050.0000</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=445">View</a></td>
+      </tr>
+      <tr>
+        <td>444</td>
+        <td>3,798.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>3,342.2400</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=444">View</a></td>
+      </tr>
+      <tr>
+        <td>443</td>
+        <td>899.0000</td>
+        <td>15.0000</td>
+        <td>QAR</td>
+        <td>764.1500</td>
+        <td><span class="status-pill canceled">canceled</span></td>
+        <td><a href="sales-order-view.html?id=443">View</a></td>
+      </tr>
+      <tr>
+        <td>442</td>
+        <td>6,199.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>5,455.1200</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=442">View</a></td>
+      </tr>
+      <tr>
+        <td>441</td>
+        <td>3,300.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>2,904.0000</td>
+        <td><span class="status-pill processing">processing</span></td>
+        <td><a href="sales-order-view.html?id=441">View</a></td>
+      </tr>
+      <tr>
+        <td>440</td>
+        <td>4,800.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>4,224.0000</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=440">View</a></td>
+      </tr>
+      <tr>
+        <td>439</td>
+        <td>1,600.0000</td>
+        <td>15.0000</td>
+        <td>QAR</td>
+        <td>1,360.0000</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=439">View</a></td>
+      </tr>
+      <tr>
+        <td>438</td>
+        <td>900.0000</td>
+        <td>15.0000</td>
+        <td>QAR</td>
+        <td>765.0000</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=438">View</a></td>
+      </tr>
+      <tr>
+        <td>437</td>
+        <td>12,750.0000</td>
+        <td>10.0000</td>
+        <td>QAR</td>
+        <td>11,475.0000</td>
+        <td><span class="status-pill processing">processing</span></td>
+        <td><a href="sales-order-view.html?id=437">View</a></td>
+      </tr>
+      <tr>
+        <td>436</td>
+        <td>2,799.0000</td>
+        <td>12.0000</td>
+        <td>QAR</td>
+        <td>2,463.1200</td>
+        <td><span class="status-pill pending">pending</span></td>
+        <td><a href="sales-order-view.html?id=436">View</a></td>
+      </tr>
+      <tr>
+        <td>435</td>
+        <td>240.0000</td>
+        <td>15.0000</td>
+        <td>QAR</td>
+        <td>204.0000</td>
+        <td><span class="status-pill complete">complete</span></td>
+        <td><a href="sales-order-view.html?id=435">View</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="pager" style="border-top:1px solid #ebeef2; margin-top:0;">
+    <span style="margin-right:auto; color:#7a8694; font-size:13px;">Showing 1 to 15 of 187 entries</span>
+    <button class="pbtn">Previous</button>
+    <button class="pbtn active">1</button>
+    <button class="pbtn">2</button>
+    <button class="pbtn">3</button>
+    <button class="pbtn">…</button>
+    <button class="pbtn">13</button>
+    <button class="pbtn">Next</button>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
+</main>
+</div>
+
+<script src="assets/seller.js?v=1777095503"></script>
+</body>
+</html>
