@@ -12,9 +12,9 @@
 <aside class="sidebar">
   <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
   <div class="profile-card">
-    <div class="avatar"><svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></div>
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
     <div class="greet">Welcome,</div>
-    <div class="name">Apple retailer</div>
+    <div class="name">Samsung Retailer</div>
     <div class="status">Online</div>
   </div>
   <nav>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
-    <a class="nav-item active" href="reviews.html"><span class="ic">💬</span><span>Reviews</span></a>
+    <a class="nav-item active" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
     <div class="nav-group">
       <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
       <div class="submenu">
@@ -55,8 +55,8 @@
   <div class="right-controls">
     <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
     <div class="user-pill">
-      <div class="ava">AR</div>
-      <span class="name">Apple retailer ▾</span>
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
     </div>
   </div>
 </div>
@@ -65,25 +65,157 @@
 
 <h1 class="page-title">Customer Reviews</h1>
 <div class="stat-grid">
-  <div class="stat-card green"><div><div class="stat-num">4.6 ★</div><div class="stat-lbl">Average Rating</div></div><div class="stat-icon">⭐</div></div>
-  <div class="stat-card blue"><div><div class="stat-num">0</div><div class="stat-lbl">Total Reviews</div></div><div class="stat-icon">💬</div></div>
-  <div class="stat-card orange"><div><div class="stat-num">0</div><div class="stat-lbl">Pending Reply</div></div><div class="stat-icon">✉</div></div>
-  <div class="stat-card purple"><div><div class="stat-num">0</div><div class="stat-lbl">This Month</div></div><div class="stat-icon">📅</div></div>
+  <div class="stat-card green"><div><div class="stat-num">4.7 ★</div><div class="stat-lbl">Average Rating</div></div><div class="stat-icon">⭐</div></div>
+  <div class="stat-card blue"><div><div class="stat-num">182</div><div class="stat-lbl">Total Reviews</div></div><div class="stat-icon">💬</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">7</div><div class="stat-lbl">Pending Reply</div></div><div class="stat-icon">✉</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">28</div><div class="stat-lbl">This Month</div></div><div class="stat-icon">📅</div></div>
 </div>
+
+<div class="stat-grid" style="grid-template-columns:1fr 1fr;">
+  <div class="panel" style="margin:0;">
+    <div class="panel-head">Rating Distribution</div>
+    <div class="panel-body">
+      <div style="margin-bottom:10px;"><div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>★★★★★ 5 stars</span><strong>128 (70.3%)</strong></div><div style="height:10px; background:#ebeef2; border-radius:5px;"><div style="height:100%; width:70.3%; background:#1abc9c; border-radius:5px;"></div></div></div>
+      <div style="margin-bottom:10px;"><div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>★★★★ 4 stars</span><strong>38 (20.9%)</strong></div><div style="height:10px; background:#ebeef2; border-radius:5px;"><div style="height:100%; width:20.9%; background:#3498db; border-radius:5px;"></div></div></div>
+      <div style="margin-bottom:10px;"><div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>★★★ 3 stars</span><strong>10 (5.5%)</strong></div><div style="height:10px; background:#ebeef2; border-radius:5px;"><div style="height:100%; width:5.5%; background:#e67e22; border-radius:5px;"></div></div></div>
+      <div style="margin-bottom:10px;"><div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>★★ 2 stars</span><strong>4 (2.2%)</strong></div><div style="height:10px; background:#ebeef2; border-radius:5px;"><div style="height:100%; width:2.2%; background:#e74c3c; border-radius:5px;"></div></div></div>
+      <div><div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>★ 1 star</span><strong>2 (1.1%)</strong></div><div style="height:10px; background:#ebeef2; border-radius:5px;"><div style="height:100%; width:1.1%; background:#c0392b; border-radius:5px;"></div></div></div>
+    </div>
+  </div>
+  <div class="panel" style="margin:0;">
+    <div class="panel-head">Top-Rated Products</div>
+    <table class="data">
+      <thead><tr><th>Product</th><th>Avg Rating</th><th>Reviews</th></tr></thead>
+      <tbody>
+        <tr><td>📱 iPhone 15 Pro Max</td><td>4.9 ★</td><td>62</td></tr>
+        <tr><td>💻 MacBook Air M3</td><td>4.8 ★</td><td>34</td></tr>
+        <tr><td>🎧 AirPods Pro 2nd Gen</td><td>4.7 ★</td><td>48</td></tr>
+        <tr><td>⌚ Apple Watch Series 9</td><td>4.6 ★</td><td>21</td></tr>
+        <tr><td>📱 iPad Air 11" M2</td><td>4.5 ★</td><td>17</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div class="panel">
-  <div class="panel-head">Reviews</div>
+  <div class="panel-head">Reviews
+    <div class="head-actions">
+      <select class="btn"><option>All ratings</option><option>5 stars</option><option>4 stars</option><option>3 stars</option><option>2 stars</option><option>1 star</option></select>
+      <select class="btn"><option>All status</option><option>Replied</option><option>Pending Reply</option><option>Hidden</option></select>
+      <input type="text" class="btn" placeholder="Search reviewer or product" style="min-width:220px;">
+    </div>
+  </div>
   <table class="data">
-    <thead><tr><th>Product</th><th>Reviewer</th><th>Rating</th><th>Comment</th><th>Date</th><th>Action</th></tr></thead>
+    <thead><tr><th>Product</th><th>Reviewer</th><th>Rating</th><th>Comment</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
     <tbody>
-      <tr><td colspan="6" style="text-align:center; color:#95a5a6; padding:24px 0;">No reviews yet</td></tr>
+      <tr>
+        <td>iPhone 15 Pro Max - 256GB</td>
+        <td>Ahmed Al-Thani<br><span style="color:#7a8694;font-size:11px;">Doha, Qatar</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Genuine product, faster delivery than expected. Apple Care included. Highly recommended!</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-25</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
+      <tr>
+        <td>MacBook Air M3 13"</td>
+        <td>Fatima Khan<br><span style="color:#7a8694;font-size:11px;">Doha, Qatar</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Excellent packaging and original AppleCare included. Setup was seamless. Will buy again.</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-24</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
+      <tr>
+        <td>AirPods Pro 2nd Gen</td>
+        <td>Omar Al-Mansoori<br><span style="color:#7a8694;font-size:11px;">Al Wakrah, Qatar</span></td>
+        <td><span style="color:#f39c12;">★★★★</span><span style="color:#ddd;">★</span></td>
+        <td style="max-width:340px;">Quick delivery. Could improve packaging quality - box arrived slightly dented.</td>
+        <td><span class="status-pill pending">Pending Reply</span></td>
+        <td>2026-04-23</td>
+        <td><a href="#">View</a> · <a href="#" style="color:#1abc9c;">Reply</a></td>
+      </tr>
+      <tr>
+        <td>Apple Watch Series 9</td>
+        <td>Layla Hassan<br><span style="color:#7a8694;font-size:11px;">Doha, Qatar</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Beautiful watch! Bands are exactly as advertised. Battery life is great.</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-22</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
+      <tr>
+        <td>iPad Air 11" M2</td>
+        <td>Khalid Trading Co.<br><span style="color:#7a8694;font-size:11px;">Manama, Bahrain</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Bulk order for our company arrived on time. All units sealed and authentic. Great service.</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-21</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
+      <tr>
+        <td>AirPods Max</td>
+        <td>Sara Boutique<br><span style="color:#7a8694;font-size:11px;">Riyadh, Saudi Arabia</span></td>
+        <td><span style="color:#f39c12;">★★★</span><span style="color:#ddd;">★★</span></td>
+        <td style="max-width:340px;">Sound quality is excellent but I expected better case design for the price.</td>
+        <td><span class="status-pill pending">Pending Reply</span></td>
+        <td>2026-04-20</td>
+        <td><a href="#">View</a> · <a href="#" style="color:#1abc9c;">Reply</a></td>
+      </tr>
+      <tr>
+        <td>MacBook Pro 14" M3</td>
+        <td>Mariam Al-Sulaiti<br><span style="color:#7a8694;font-size:11px;">Doha, Qatar</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Exactly what I needed for my design work. Display is stunning.</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-19</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
+      <tr>
+        <td>iPhone 15 Pro Max - 256GB</td>
+        <td>Yousef Al-Kuwari<br><span style="color:#7a8694;font-size:11px;">Lusail, Qatar</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Camera quality is amazing. Came with all accessories and Arabic warranty papers.</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-18</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
+      <tr>
+        <td>Apple Watch Ultra 2</td>
+        <td>Hassan Mahmoud<br><span style="color:#7a8694;font-size:11px;">Dubai, UAE</span></td>
+        <td><span style="color:#f39c12;">★★</span><span style="color:#ddd;">★★★</span></td>
+        <td style="max-width:340px;">Got the wrong band size. Customer service was slow to respond. Eventually resolved.</td>
+        <td><span class="status-pill pending">Pending Reply</span></td>
+        <td>2026-04-17</td>
+        <td><a href="#">View</a> · <a href="#" style="color:#1abc9c;">Reply</a></td>
+      </tr>
+      <tr>
+        <td>iPad Pro 12.9"</td>
+        <td>Noor Abdullah<br><span style="color:#7a8694;font-size:11px;">Kuwait City, Kuwait</span></td>
+        <td><span style="color:#f39c12;">★★★★★</span></td>
+        <td style="max-width:340px;">Perfect for digital art. Apple Pencil pairing was instant. Worth every Riyal.</td>
+        <td><span class="status-pill complete">Replied</span></td>
+        <td>2026-04-16</td>
+        <td><a href="#">View</a> · <a href="#">Hide</a></td>
+      </tr>
     </tbody>
   </table>
+  <div class="pager">
+    <span>‹</span>
+    <button class="pbtn active">1</button>
+    <button class="pbtn">2</button>
+    <button class="pbtn">3</button>
+    <span>...</span>
+    <button class="pbtn">19</button>
+    <span>›</span>
+    <span style="margin-left:auto; color:#7a8694;">Showing 1–10 of 182 reviews</span>
+  </div>
 </div>
 
 </div>
 <div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
 </main>
 </div>
-<script src="assets/seller.js"></script>
+<script src="assets/seller.js?v=1777095503"></script>
 </body>
 </html>

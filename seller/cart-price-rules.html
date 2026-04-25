@@ -12,9 +12,9 @@
 <aside class="sidebar">
   <div class="brand"><img class="brand-logo" src="https://electronyat.qa/_next/static/media/electronyat.8bc70f46.svg" alt="Electronyat"></div>
   <div class="profile-card">
-    <div class="avatar"><svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg></div>
+    <div class="avatar"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><text x="28" y="42" text-anchor="middle" font-family="Helvetica Neue, Arial Black, sans-serif" font-size="42" font-weight="900" fill="#1428a0" font-style="italic">S</text></svg></div>
     <div class="greet">Welcome,</div>
-    <div class="name">Apple retailer</div>
+    <div class="name">Samsung Retailer</div>
     <div class="status">Online</div>
   </div>
   <nav>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <a class="nav-item" href="withdrawals.html"><span class="ic">💲</span><span>Withdrawals</span></a>
-    <a class="nav-item" href="reviews.html"><span class="ic">💬</span><span>Reviews</span></a>
+    <a class="nav-item" href="reviews.html" style="display:none;"><span class="ic">💬</span><span>Reviews</span></a>
     <div class="nav-group">
       <a class="nav-item" href="#" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');"><span class="ic">☁</span><span>Mass Import/Export</span><span class="caret">▾</span></a>
       <div class="submenu">
@@ -55,8 +55,8 @@
   <div class="right-controls">
     <button class="icon-btn" title="Notifications">📨<span class="badge">0</span></button>
     <div class="user-pill">
-      <div class="ava">AR</div>
-      <span class="name">Apple retailer ▾</span>
+      <div class="ava">SR</div>
+      <span class="name">Samsung Retailer ▾</span>
     </div>
   </div>
 </div>
@@ -65,22 +65,145 @@
 
 <h1 class="page-title">Cart Price Rules</h1>
 <div style="display:flex; justify-content:space-between; margin-bottom:14px;">
-  <span class="records">0 records found</span>
+  <span class="records">8 records found</span>
   <button class="btn-primary btn" onclick="alert('New cart rule form')">+ Add New Rule</button>
 </div>
+
+<div class="stat-grid">
+  <div class="stat-card green"><div><div class="stat-num">5</div><div class="stat-lbl">Active Rules</div></div><div class="stat-icon">✓</div></div>
+  <div class="stat-card blue"><div><div class="stat-num">QAR 12,480</div><div class="stat-lbl">Discount Given</div></div><div class="stat-icon">💸</div></div>
+  <div class="stat-card orange"><div><div class="stat-num">142</div><div class="stat-lbl">Times Used</div></div><div class="stat-icon">🎟</div></div>
+  <div class="stat-card purple"><div><div class="stat-num">3</div><div class="stat-lbl">Expiring Soon</div></div><div class="stat-icon">⏰</div></div>
+</div>
+
 <div class="panel">
+  <div class="panel-head">All Rules
+    <div class="head-actions">
+      <select class="btn"><option>All status</option><option>Active</option><option>Inactive</option><option>Expired</option></select>
+      <select class="btn"><option>Actions</option><option>Enable</option><option>Disable</option><option>Delete</option></select>
+    </div>
+  </div>
   <table class="data">
-    <thead><tr><th class="check-col"><input type="checkbox"></th><th>Rule</th><th>Description</th><th>Coupon Code</th><th>Status</th><th>From</th><th>To</th><th>Action</th></tr></thead>
+    <thead><tr><th class="check-col"><input type="checkbox"></th><th>ID</th><th>Rule Name</th><th>Description</th><th>Coupon Code</th><th>Discount</th><th>Uses</th><th>Status</th><th>From</th><th>To</th><th>Action</th></tr></thead>
     <tbody>
-      <tr><td colspan="8" style="text-align:center; color:#95a5a6; padding:24px 0;">No cart price rules yet. Click <strong>Add New Rule</strong> to create one.</td></tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>1</td>
+        <td><a href="#">Eid Al-Fitr Special</a></td>
+        <td>10% off all Apple devices</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">EID2026</code></td>
+        <td>10%</td>
+        <td>42</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-04-01</td>
+        <td>2026-05-15</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>2</td>
+        <td><a href="#">Free Shipping over QAR 1000</a></td>
+        <td>Free standard shipping for orders above QAR 1,000</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">SHIPFREE</code></td>
+        <td>Free Shipping</td>
+        <td>38</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-01-01</td>
+        <td>2026-12-31</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>3</td>
+        <td><a href="#">First Order 5% Off</a></td>
+        <td>5% discount on first purchase</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">WELCOME5</code></td>
+        <td>5%</td>
+        <td>27</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-01-01</td>
+        <td>—</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>4</td>
+        <td><a href="#">iPhone Bundle Discount</a></td>
+        <td>Buy iPhone + AirPods, save QAR 200</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">IPHONEBUNDLE</code></td>
+        <td>QAR 200 off</td>
+        <td>15</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-04-15</td>
+        <td>2026-04-30</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>5</td>
+        <td><a href="#">Weekend Flash Sale</a></td>
+        <td>15% off accessories every weekend</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">WEEKEND15</code></td>
+        <td>15%</td>
+        <td>12</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-04-20</td>
+        <td>2026-04-28</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>6</td>
+        <td><a href="#">VIP Customer Discount</a></td>
+        <td>8% off for Gold-tier loyalty members</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">VIPGOLD</code></td>
+        <td>8%</td>
+        <td>8</td>
+        <td><span class="status-pill complete">Active</span></td>
+        <td>2026-01-01</td>
+        <td>2026-12-31</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>7</td>
+        <td><a href="#">National Day Sale</a></td>
+        <td>20% off everything for Qatar National Day</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">QATAR20</code></td>
+        <td>20%</td>
+        <td>0</td>
+        <td><span class="status-pill pending">Scheduled</span></td>
+        <td>2026-12-18</td>
+        <td>2026-12-22</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>8</td>
+        <td><a href="#">Ramadan Special 2026</a></td>
+        <td>12% off MacBook & iPad during Ramadan</td>
+        <td><code style="background:#f7f9fb; padding:2px 6px; border-radius:3px;">RAMADAN12</code></td>
+        <td>12%</td>
+        <td>0</td>
+        <td><span class="status-pill canceled">Expired</span></td>
+        <td>2026-02-28</td>
+        <td>2026-03-29</td>
+        <td><a href="#">Edit</a> · <a href="#">Duplicate</a></td>
+      </tr>
     </tbody>
   </table>
+  <div class="pager">
+    <span>‹</span>
+    <button class="pbtn active">1</button>
+    <span>›</span>
+    <span style="margin-left:auto; color:#7a8694;">Showing 1–8 of 8 rules</span>
+  </div>
 </div>
 
 </div>
 <div class="footer">Copyright © 2013-present Magento, Inc. All rights reserved.</div>
 </main>
 </div>
-<script src="assets/seller.js"></script>
+<script src="assets/seller.js?v=1777095503"></script>
 </body>
 </html>

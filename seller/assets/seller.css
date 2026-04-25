@@ -13,8 +13,8 @@ a:hover { text-decoration: underline; }
 .sidebar .brand .brand-name { display: none; }
 .sidebar .brand .icon-circle { display: none; }
 .sidebar .profile-card { padding: 18px 20px; border-bottom: 1px solid #1f2d3d; text-align: center; }
-.sidebar .profile-card .avatar { width: 56px; height: 56px; border-radius: 50%; background: #fff; color: #2c3e50; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; border: 3px solid #34495e; }
-.sidebar .profile-card .avatar svg { width: 28px; height: 32px; fill: #2c3e50; }
+.sidebar .profile-card .avatar { width: 56px; height: 56px; border-radius: 50%; background: #fff; color: #1428a0; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; border: 3px solid #34495e; overflow: hidden; }
+.sidebar .profile-card .avatar svg { width: 50px; height: 50px; }
 .sidebar .profile-card .greet { color: #95a5a6; font-size: 12px; margin-bottom: 2px; }
 .sidebar .profile-card .name { color: #fff; font-size: 14px; font-weight: 500; }
 .sidebar .profile-card .status { color: #2ecc71; font-size: 11px; margin-top: 4px; }
