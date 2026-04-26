@@ -28,8 +28,8 @@
 </aside>
 
 
-<div id="mp-backdrop" class="show" onclick="mpClose()"></div>
-<aside id="mp-menu" class="open">
+<div id="mp-backdrop" onclick="mpClose()"></div>
+<aside id="mp-menu">
   <div class="mp-head">
     <h2>Market Place</h2>
     <button class="mp-close" onclick="mpClose()">✕</button>
@@ -140,6 +140,10 @@
         <option value="no" selected>No</option>
         <option value="yes">Yes</option>
       </select>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid #e3e3e3;">
+      <button class="btn" onclick="document.querySelectorAll('#period-sel,#from-date,#to-date,#empty-rows').forEach(e=>{if(e.tagName==='SELECT')e.selectedIndex=0;else e.value='';});">Reset Filter</button>
+      <button class="btn btn-primary" onclick="alert('Filter applied')">🔍 Apply Filter</button>
     </div>
   </div>
 
