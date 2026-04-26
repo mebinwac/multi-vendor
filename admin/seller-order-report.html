@@ -141,8 +141,31 @@
         <option value="yes">Yes</option>
       </select>
     </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>Seller</label>
+      <select id="seller-sel" style="max-width:300px;">
+        <option value="">All sellers</option>
+        <option value="S101">Aisha Al-Mansoori (S101)</option>
+        <option value="S102">Mohammed Khalid (S102)</option>
+        <option value="S103">Sara Hassan Boutique (S103)</option>
+        <option value="S104">Layla Trading (S104)</option>
+        <option value="S105">Doha Electronics (S105)</option>
+        <option value="S106">Pearl Fashion Co. (S106)</option>
+        <option value="S107">Souq Al-Bahar (S107)</option>
+      </select>
+    </div>
+    <div class="field" style="grid-template-columns:160px 1fr; align-items:center; padding:8px 0; max-width: 480px;">
+      <label>Status</label>
+      <select id="seller-status-sel" style="max-width:200px;">
+        <option value="">All statuses</option>
+        <option value="complete">Complete</option>
+        <option value="pending">Pending</option>
+        <option value="canceled">Canceled</option>
+        <option value="processing">Processing</option>
+      </select>
+    </div>
     <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid #e3e3e3;">
-      <button class="btn" onclick="document.querySelectorAll('#period-sel,#from-date,#to-date,#empty-rows').forEach(e=>{if(e.tagName==='SELECT')e.selectedIndex=0;else e.value='';});">Reset Filter</button>
+      <button class="btn" onclick="document.querySelectorAll('#period-sel,#from-date,#to-date,#empty-rows,#seller-sel,#seller-status-sel').forEach(e=>{if(e.tagName==='SELECT')e.selectedIndex=0;else e.value='';});">Reset Filter</button>
       <button class="btn btn-primary" onclick="alert('Filter applied')">🔍 Apply Filter</button>
     </div>
   </div>
