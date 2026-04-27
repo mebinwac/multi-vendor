@@ -111,30 +111,232 @@
 </div>
 
 <div class="page-header">
-  <h1>All Withdrawal Requests</h1>
-  <div class="actions">
-    <button class="btn btn-primary" onclick="if(confirm('Approve and process all selected withdrawals?')){alert('Withdrawals approved'); location.reload();}">Bulk Approve</button>
-  </div>
+  <h1>Withdrawals</h1>
 </div>
+
 <div class="content">
-  <div class="toolbar">
-    <input type="text" placeholder="Search by keyword">
-    
-    <span class="spacer"></span>
-    <span class="records">64 records found</span>
-    <select><option>20 per page</option><option>50 per page</option><option>100 per page</option></select>
+
+  <!-- Toolbar (Filters / Default View / Columns) -->
+  <div style="display:flex; justify-content:flex-end; gap:0; padding: 8px 0; border-bottom: 1px solid #e3e3e3; margin-bottom: 12px;">
+    <div class="toolbar-right">
+      <button class="tb-btn" onclick="toggleFilters()">⛁ Filters</button>
+      <button class="tb-btn" onclick="alert('View saved')">👁 Default View ▾</button>
+      <button class="tb-btn" onclick="alert('Column visibility chooser')">⚙ Columns ▾</button>
+    </div>
   </div>
-  <table class="data">
-    <thead><tr><th class='check-col'><input type='checkbox'></th><th>Request #</th><th>Seller</th><th>Amount</th><th>Method</th><th>Status</th><th>Date</th></tr></thead>
-    <tbody><tr><td class='check-col'><input type='checkbox'></td><td><a href='withdrawal-view.html'>WR-128</a></td><td>Aisha Al-Mansoori</td><td>QAR 3,640.00</td><td>Bank Transfer</td><td><span class="status pending">Pending</span></td><td>2026-04-23</td></tr><tr><td class='check-col'><input type='checkbox'></td><td><a href='withdrawal-view.html'>WR-127</a></td><td>Sara Hassan Boutique</td><td>QAR 6,500.00</td><td>Stripe</td><td><span class="status approved">Approved</span></td><td>2026-04-22</td></tr><tr><td class='check-col'><input type='checkbox'></td><td><a href='withdrawal-view.html'>WR-126</a></td><td>Doha Electronics</td><td>QAR 4,740.00</td><td>Bank Transfer</td><td><span class="status complete">Paid</span></td><td>2026-04-21</td></tr><tr><td class='check-col'><input type='checkbox'></td><td>WR-125</td><td>Souq Al-Bahar</td><td>QAR 8,200.00</td><td>PayPal</td><td><span class="status pending">Pending</span></td><td>2026-04-21</td></tr><tr><td class='check-col'><input type='checkbox'></td><td>WR-124</td><td>Mohammed Khalid</td><td>QAR 1,210.00</td><td>Bank Transfer</td><td><span class="status rejected">Rejected</span></td><td>2026-04-20</td></tr></tbody>
+
+  <!-- Collapsible filter panel -->
+  <div id="filter-panel" style="display:none; background:#fff; border:1px solid #e3e3e3; padding: 18px 22px; margin-bottom: 12px; border-radius: 2px;">
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px 22px;">
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Request #</label><input type="text" placeholder="e.g. WR-128"></div>
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Seller</label><select>
+        <option value="">All sellers</option>
+        <option>Aisha Al-Mansoori (S101)</option>
+        <option>Mohammed Khalid (S102)</option>
+        <option>Sara Hassan Boutique (S103)</option>
+        <option>Layla Trading (S104)</option>
+        <option>Doha Electronics (S105)</option>
+        <option>Pearl Fashion Co. (S106)</option>
+        <option>Souq Al-Bahar (S107)</option>
+      </select></div>
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Status</label><select>
+        <option value="">Any</option>
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="paid">Paid</option>
+        <option value="rejected">Rejected</option>
+      </select></div>
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Method</label><select>
+        <option value="">Any</option>
+        <option>Bank Transfer</option>
+        <option>PayPal</option>
+        <option>Stripe</option>
+        <option>Cheque</option>
+        <option>Wallet Credit</option>
+      </select></div>
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Date From</label><input type="date"></div>
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Date To</label><input type="date"></div>
+      <div class="field" style="grid-template-columns:1fr; padding:0;"><label>Amount Range (QAR)</label>
+        <div style="display:flex; gap:6px;"><input type="number" placeholder="Min" style="flex:1;"><input type="number" placeholder="Max" style="flex:1;"></div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid #e3e3e3;">
+      <button class="btn" onclick="document.getElementById('filter-panel').style.display='none'">Cancel</button>
+      <button class="btn" onclick="resetFilters()">Reset</button>
+      <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+    </div>
+  </div>
+
+  <!-- Active filter chips -->
+  <div id="active-filters" style="display:none; gap:6px; flex-wrap:wrap; margin-bottom: 12px;"></div>
+
+  <!-- Actions / pagination row -->
+  <div style="display:flex; gap:12px; align-items:center; margin-bottom: 12px;">
+    <div class="actions-dd">
+      <button class="tb-btn" onclick="document.getElementById('actions-menu').classList.toggle('show')">Actions ▾</button>
+      <div id="actions-menu" class="split-menu" style="left:0; top:34px; right:auto;">
+        <a href="#" data-act="approve">Approve</a>
+        <a href="#" data-act="pay">Mark as Paid</a>
+        <a href="#" data-act="reject">Reject</a>
+        <a href="#" data-act="delete">Delete</a>
+      </div>
+    </div>
+    <span class="records" id="records-count">64 records found</span>
+    <span style="flex:1;"></span>
+    <select class="tb-btn" style="border-color:#ccc;"><option>20</option><option>50</option><option>100</option></select>
+    <span style="font-size:13px; color:#666;">per page</span>
+    <span style="font-size:13px;">‹ <input type="number" value="1" style="width:48px; padding:4px; border:1px solid #ccc;"> of 4 ›</span>
+  </div>
+
+  <!-- Grid -->
+  <table class="data" id="withdrawal-grid">
+    <thead><tr>
+      <th class="check-col"><input type="checkbox" id="check-all"></th>
+      <th>ID</th>
+      <th>Request # ↕</th>
+      <th>Seller</th>
+      <th>Seller ID</th>
+      <th>Amount</th>
+      <th>Method</th>
+      <th>Bank Account</th>
+      <th>Note</th>
+      <th>Status</th>
+      <th>Submitted</th>
+      <th>Processed</th>
+      <th>Action</th>
+    </tr></thead>
+    <tbody id="withdrawal-tbody">
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>128</td>
+        <td><a href="withdrawal-view.html">WR-128</a></td>
+        <td>Aisha Al-Mansoori</td>
+        <td>S101</td>
+        <td>QAR 3,640.00</td>
+        <td>Bank Transfer</td>
+        <td>QA12 ••• 5678</td>
+        <td>Monthly payout</td>
+        <td><span class="status pending">Pending</span></td>
+        <td>2026-04-23</td>
+        <td>—</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>127</td>
+        <td><a href="withdrawal-view.html">WR-127</a></td>
+        <td>Sara Hassan Boutique</td>
+        <td>S103</td>
+        <td>QAR 6,500.00</td>
+        <td>Stripe</td>
+        <td>acct_••• 9821</td>
+        <td>Q1 settlement</td>
+        <td><span class="status approved">Approved</span></td>
+        <td>2026-04-22</td>
+        <td>2026-04-22</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>126</td>
+        <td><a href="withdrawal-view.html">WR-126</a></td>
+        <td>Doha Electronics</td>
+        <td>S105</td>
+        <td>QAR 4,740.00</td>
+        <td>Bank Transfer</td>
+        <td>QA38 ••• 2245</td>
+        <td>—</td>
+        <td><span class="status complete">Paid</span></td>
+        <td>2026-04-21</td>
+        <td>2026-04-21</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>125</td>
+        <td><a href="withdrawal-view.html">WR-125</a></td>
+        <td>Souq Al-Bahar</td>
+        <td>S107</td>
+        <td>QAR 8,200.00</td>
+        <td>PayPal</td>
+        <td>souq@albahar.qa</td>
+        <td>Eid bonus payout</td>
+        <td><span class="status pending">Pending</span></td>
+        <td>2026-04-21</td>
+        <td>—</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>124</td>
+        <td><a href="withdrawal-view.html">WR-124</a></td>
+        <td>Mohammed Khalid</td>
+        <td>S102</td>
+        <td>QAR 1,210.00</td>
+        <td>Bank Transfer</td>
+        <td>QA45 ••• 1133</td>
+        <td>Below min threshold</td>
+        <td><span class="status rejected">Rejected</span></td>
+        <td>2026-04-20</td>
+        <td>2026-04-20</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>123</td>
+        <td><a href="withdrawal-view.html">WR-123</a></td>
+        <td>Layla Trading</td>
+        <td>S104</td>
+        <td>QAR 2,950.00</td>
+        <td>Bank Transfer</td>
+        <td>QA09 ••• 4477</td>
+        <td>—</td>
+        <td><span class="status complete">Paid</span></td>
+        <td>2026-04-19</td>
+        <td>2026-04-20</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>122</td>
+        <td><a href="withdrawal-view.html">WR-122</a></td>
+        <td>Pearl Fashion Co.</td>
+        <td>S106</td>
+        <td>QAR 5,400.00</td>
+        <td>Cheque</td>
+        <td>—</td>
+        <td>Awaiting verification</td>
+        <td><span class="status pending">Pending</span></td>
+        <td>2026-04-18</td>
+        <td>—</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+      <tr>
+        <td class="check-col"><input type="checkbox"></td>
+        <td>121</td>
+        <td><a href="withdrawal-view.html">WR-121</a></td>
+        <td>Aisha Al-Mansoori</td>
+        <td>S101</td>
+        <td>QAR 4,200.00</td>
+        <td>Bank Transfer</td>
+        <td>QA12 ••• 5678</td>
+        <td>—</td>
+        <td><span class="status complete">Paid</span></td>
+        <td>2026-04-15</td>
+        <td>2026-04-16</td>
+        <td><a class="action-link" href="withdrawal-view.html">View</a></td>
+      </tr>
+    </tbody>
   </table>
-  <div class="pager">
+
+  <div class="pager" style="margin-top:12px;">
     <span>‹</span>
     <button class="pager-btn active">1</button>
     <button class="pager-btn">2</button>
     <button class="pager-btn">3</button>
+    <button class="pager-btn">4</button>
     <span>›</span>
-    <span style="margin-left:auto;">of 3 pages | View <input type="number" value="20" /></span>
+    <span style="margin-left:auto;">of 4 pages | View <input type="number" value="20" /></span>
   </div>
 </div>
 
@@ -142,5 +344,78 @@
 </main>
 </div>
 <script src="assets/admin.js"></script>
+<script>
+  // Master checkbox toggles all rows
+  document.getElementById('check-all').addEventListener('change', function(){
+    document.querySelectorAll('#withdrawal-tbody input[type=checkbox]').forEach(c => c.checked = this.checked);
+  });
+
+  function toggleFilters() {
+    const p = document.getElementById('filter-panel');
+    p.style.display = p.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function makeChip(label, val) {
+    const chip = document.createElement('span');
+    chip.style.cssText = 'background:#e6f0fa; color:#1979c3; padding:4px 10px; border-radius:12px; font-size:12px; display:inline-flex; align-items:center; gap:6px;';
+    chip.appendChild(document.createTextNode(label + ': ' + val));
+    const x = document.createElement('button');
+    x.textContent = '×';
+    x.style.cssText = 'background:none; border:none; color:#1979c3; cursor:pointer; font-size:14px; padding:0; margin-left:4px;';
+    x.onclick = () => { chip.remove(); refreshChipVisibility(); };
+    chip.appendChild(x);
+    return chip;
+  }
+  function refreshChipVisibility() {
+    const cont = document.getElementById('active-filters');
+    cont.style.display = cont.querySelectorAll('span').length > 0 ? 'flex' : 'none';
+  }
+
+  function applyFilters() {
+    const inputs = document.querySelectorAll('#filter-panel input, #filter-panel select');
+    const chips = [];
+    inputs.forEach(i => {
+      const lbl = i.closest('.field')?.querySelector('label')?.textContent || '';
+      const val = i.value && i.value !== 'Any' ? i.value : '';
+      if (lbl && val) chips.push({label: lbl, val: val});
+    });
+    const cont = document.getElementById('active-filters');
+    while (cont.firstChild) cont.removeChild(cont.firstChild);
+    if (chips.length > 0) {
+      const lbl = document.createElement('strong');
+      lbl.style.cssText = 'font-size:12px; color:#666; margin-right:8px;';
+      lbl.textContent = 'Active filters:';
+      cont.appendChild(lbl);
+      chips.forEach(c => cont.appendChild(makeChip(c.label, c.val)));
+      cont.style.display = 'flex';
+    } else {
+      cont.style.display = 'none';
+    }
+    document.getElementById('filter-panel').style.display = 'none';
+  }
+
+  function resetFilters() {
+    document.querySelectorAll('#filter-panel input').forEach(i => i.value = '');
+    document.querySelectorAll('#filter-panel select').forEach(s => s.selectedIndex = 0);
+    const cont = document.getElementById('active-filters');
+    while (cont.firstChild) cont.removeChild(cont.firstChild);
+    cont.style.display = 'none';
+  }
+
+  // Bulk actions
+  document.getElementById('actions-menu').addEventListener('click', function(e){
+    const a = e.target.closest('a[data-act]');
+    if (!a) return;
+    e.preventDefault();
+    const checked = document.querySelectorAll('#withdrawal-tbody input[type=checkbox]:checked');
+    if (checked.length === 0) { alert('Select rows first.'); return; }
+    if (!confirm('Apply "' + a.dataset.act + '" to ' + checked.length + ' withdrawal request(s)?')) return;
+    alert(checked.length + ' request(s) ' + a.dataset.act + 'd.');
+    document.getElementById('actions-menu').classList.remove('show');
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.actions-dd')) document.getElementById('actions-menu')?.classList.remove('show');
+  });
+</script>
 </body>
 </html>
